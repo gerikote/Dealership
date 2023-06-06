@@ -20,26 +20,22 @@ public class AddressDAO extends BaseDAO<Address> {
 
     @Override
     protected void setParameters(PreparedStatement ps, Address entity) throws SQLException {
-        ps.setString(1,entity.getAddress());
-        ps.setString(2,entity.getZipCode());
-        ps.setInt(3,entity.getCityID());
+        ps.setString(1, entity.getAddress());
+        ps.setString(2, entity.getZipCode());
+        ps.setInt(3, entity.getCityID());
     }
 
     @Override
-    protected String generateInsertQuery(Address entity) {
-        String tableName = "addresses";
-        String columns = " address, zip_code, city_id";
-        String values = "?,?,?";
-        String query = "INSERT INTO " + tableName + " (" + columns + ") VALUES (" + values + ")";
-        return query;    }
+    protected String generateInsertQuery() {
+        String query = "INSERT INTO " + getTableName() + " (address, zip_code, city_id) VALUES (?,?,?)";
+        return query;
+    }
 
     @Override
-    protected String generateUpdateQuery(Address entity) {
-        String tableName = "addresses";
-        String setIdentifiers = "address=?";
-        String condition = "address_id = ?";
-        String query = "UPDATE " + tableName + " SET " + setIdentifiers + " WHERE " + condition;
-        return query;    }
+    protected String generateUpdateQuery() {
+        String query = "UPDATE " + getTableName() + " SET address=? WHERE address_id=?";
+        return query;
+    }
 
     @Override
     protected Address mapResultSetToObject(ResultSet rs) throws SQLException {
@@ -54,5 +50,6 @@ public class AddressDAO extends BaseDAO<Address> {
         addressObj.setAddress(address);
         addressObj.setZipCode(zipCode);
 
-        return addressObj;    }
+        return addressObj;
+    }
 }

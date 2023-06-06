@@ -19,38 +19,32 @@ public class ManufacturerDAO extends BaseDAO<Manufacturer> {
     }
 
     @Override
-    protected String generateInsertQuery(Manufacturer entity) {
-        String tableName="manufacturer";
-        String columns="manufacturer,phone_number,email";
-        String values="?,?,?";
-        String query ="INSERT INTO " + tableName + " (" +columns+") VALUES (" +values+ ")" ;
+    protected String generateInsertQuery() {
+        String query = "INSERT INTO " + getTableName() + " (manufacturer, phone_number, email) VALUES (?,?,?)";
         return query;
     }
 
     @Override
     protected void setParameters(PreparedStatement ps, Manufacturer entity) throws SQLException {
-        ps.setString(1,entity.getManufacturer());
-        ps.setString(2,entity.getPhoneNumber());
-        ps.setString(3,entity.getEmail());
+        ps.setString(1, entity.getManufacturer());
+        ps.setString(2, entity.getPhoneNumber());
+        ps.setString(3, entity.getEmail());
     }
 
     @Override
-    protected String generateUpdateQuery(Manufacturer entity) {
-        String tableName="manufacturer";
-        String setIdentifiers="email=?,phone_number=?";
-        String condition="manufacturer_id = ?";
-        String query="UPDATE " + tableName + " SET " +setIdentifiers + " WHERE " +condition;
+    protected String generateUpdateQuery() {
+        String query = "UPDATE " + getTableName() + " SET email=?, phone_number=? WHERE manufacturer_id=?";
         return query;
     }
 
     @Override
     protected Manufacturer mapResultSetToObject(ResultSet rs) throws SQLException {
-        int id=rs.getInt("manufacturer_id");
-        String manufacturerName=rs.getString("manufacturer");
-        String phone=rs.getString("phone_number");
-        String email=rs.getString("email");
+        int id = rs.getInt("manufacturer_id");
+        String manufacturerName = rs.getString("manufacturer");
+        String phone = rs.getString("phone_number");
+        String email = rs.getString("email");
 
-        Manufacturer manufacturer=new Manufacturer();
+        Manufacturer manufacturer = new Manufacturer();
         manufacturer.setManufacturerId(id);
         manufacturer.setManufacturer(manufacturerName);
         manufacturer.setPhoneNumber(phone);
@@ -58,9 +52,4 @@ public class ManufacturerDAO extends BaseDAO<Manufacturer> {
 
         return manufacturer;
     }
-
-    public ManufacturerDAO() {
-
-    }
-
 }

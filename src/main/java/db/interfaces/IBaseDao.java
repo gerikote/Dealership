@@ -1,6 +1,5 @@
-package Interfaces;
+package db.interfaces;
 
-import javax.swing.text.html.parser.Entity;
 import java.util.List;
 
 public interface IBaseDao<T> {

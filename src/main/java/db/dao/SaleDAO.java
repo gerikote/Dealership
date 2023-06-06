@@ -31,21 +31,16 @@ public class SaleDAO extends BaseDAO<Sale> {
     }
 
     @Override
-    protected String generateInsertQuery(Sale entity) {
-        String tableName = "sales";
-        String columns = " price, date, employee_id, customer_id, inventory_id, insurance_id, payment_method_id";
-        String values = "?,?,?,?,?,?,?";
-        String query = "INSERT INTO " + tableName + " (" + columns + ") VALUES (" + values + ")";
+    protected String generateInsertQuery() {
+        String query = "INSERT INTO " + getTableName() + " (price, date, employee_id, customer_id, inventory_id, insurance_id, payment_method_id) VALUES (?,?,?,?,?,?,?)";
         return query;
     }
 
     @Override
-    protected String generateUpdateQuery(Sale entity) {
-        String tableName = "sales";
-        String setIdentifiers = "price=?";
-        String condition = "sale_id = ?";
-        String query = "UPDATE " + tableName + " SET " + setIdentifiers + " WHERE " + condition;
-        return query;    }
+    protected String generateUpdateQuery() {
+        String query = "UPDATE " + getTableName() + " SET price=? WHERE sale_id = ?";
+        return query;
+    }
 
     @Override
     protected Sale mapResultSetToObject(ResultSet rs) throws SQLException {
@@ -68,5 +63,6 @@ public class SaleDAO extends BaseDAO<Sale> {
         sale.setInsuranceId(insuranceId);
         sale.setPaymentMethodId(paymentMethodId);
 
-        return sale;    }
+        return sale;
+    }
 }

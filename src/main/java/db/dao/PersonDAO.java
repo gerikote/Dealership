@@ -28,20 +28,14 @@ public class PersonDAO extends BaseDAO<Person> {
     }
 
     @Override
-    protected String generateInsertQuery(Person entity) {
-        String tableName = "people";
-        String columns = " first_name, last_name, date_of_birth, phone_number, email, address_id";
-        String values = "?,?,?,?,?,?";
-        String query = "INSERT INTO " + tableName + " (" + columns + ") VALUES (" + values + ")";
+    protected String generateInsertQuery() {
+        String query = "INSERT INTO " + getTableName() + " (first_name, last_name, date_of_birth, phone_number, email, address_id) VALUES (?,?,?,?,?,?)";
         return query;
     }
 
     @Override
-    protected String generateUpdateQuery(Person entity) {
-        String tableName = "people";
-        String setIdentifiers = "email=?";
-        String condition = "person_id = ?";
-        String query = "UPDATE " + tableName + " SET " + setIdentifiers + " WHERE " + condition;
+    protected String generateUpdateQuery() {
+        String query = "UPDATE " + getTableName() + " SET email=? WHERE person_id=?";
         return query;
     }
 

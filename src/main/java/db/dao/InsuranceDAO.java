@@ -24,20 +24,14 @@ public class InsuranceDAO extends BaseDAO<Insurance> {
     }
 
     @Override
-    protected String generateInsertQuery(Insurance entity) {
-        String tableName = "insurance";
-        String columns = "insurance_company,coverage";
-        String values = "?,?";
-        String query = "INSERT INTO " + tableName + " (" + columns + ") VALUES (" + values + ")";
+    protected String generateInsertQuery() {
+        String query = "INSERT INTO " + getTableName() + " (insurance_company, coverage) VALUES (?, ?)";
         return query;
     }
 
     @Override
-    protected String generateUpdateQuery(Insurance entity) {
-        String tableName = "insurance";
-        String setIdentifiers = "insurance_company=?";
-        String condition = "insurance_id = ?";
-        String query = "UPDATE " + tableName + " SET " + setIdentifiers + " WHERE " + condition;
+    protected String generateUpdateQuery() {
+        String query = "UPDATE " + getTableName() + " SET insurance_company=? WHERE insurance_id=?";
         return query;
     }
 
@@ -52,5 +46,6 @@ public class InsuranceDAO extends BaseDAO<Insurance> {
         insurance.setInsuranceCompany(company);
         insurance.setCoverage(coverage);
 
-        return insurance;    }
+        return insurance;
+    }
 }

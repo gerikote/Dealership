@@ -23,20 +23,14 @@ public class PaymentMethodDAO extends BaseDAO<PaymentMethod> {
     }
 
     @Override
-    protected String generateInsertQuery(PaymentMethod entity) {
-        String tableName = "payment_methods";
-        String columns = "payment_method";
-        String values = "?";
-        String query = "INSERT INTO " + tableName + " (" + columns + ") VALUES (" + values + ")";
+    protected String generateInsertQuery() {
+        String query = "INSERT INTO " + getTableName() + " (payment_method) VALUES (?)";
         return query;
     }
 
     @Override
-    protected String generateUpdateQuery(PaymentMethod entity) {
-        String tableName = "payment_methods";
-        String setIdentifiers = "payment_method=?";
-        String condition = "payment_method_id = ?";
-        String query = "UPDATE " + tableName + " SET " + setIdentifiers + " WHERE " + condition;
+    protected String generateUpdateQuery() {
+        String query = "UPDATE " + getTableName() + " SET payment_method=? WHERE payment_method_id=?";
         return query;
     }
 

@@ -24,20 +24,14 @@ public class ColorDAO extends BaseDAO<Color> {
     }
 
     @Override
-    protected String generateInsertQuery(Color entity) {
-        String tableName = "colors";
-        String columns = "color";
-        String values = "?";
-        String query = "INSERT INTO " + tableName + " (" + columns + ") VALUES (" + values + ")";
+    protected String generateInsertQuery() {
+        String query = "INSERT INTO " + getTableName() + " (color) VALUES (?)";
         return query;
     }
 
     @Override
-    protected String generateUpdateQuery(Color entity) {
-        String tableName = "colors";
-        String setIdentifiers = "color=?";
-        String condition = "color_id = ?";
-        String query = "UPDATE " + tableName + " SET " + setIdentifiers + " WHERE " + condition;
+    protected String generateUpdateQuery() {
+        String query = "UPDATE " + getTableName() + " SET color=? WHERE color_id=?";
         return query;
     }
 

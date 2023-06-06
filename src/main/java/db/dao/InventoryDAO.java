@@ -34,20 +34,14 @@ public class InventoryDAO extends BaseDAO<Inventory> {
     }
 
     @Override
-    protected String generateInsertQuery(Inventory entity) {
-        String tableName = "inventory";
-        String columns = " model, year, mileage, fuel, msrp, vin, in_stock, manufacturer_id, color_id, condition_id";
-        String values = "?,?,?,?,?,?,?,?,?,?";
-        String query = "INSERT INTO " + tableName + " (" + columns + ") VALUES (" + values + ")";
+    protected String generateInsertQuery() {
+        String query = "INSERT INTO " + getTableName() + " (model, year, mileage, fuel, msrp, vin, in_stock, manufacturer_id, color_id, condition_id) VALUES (?,?,?,?,?,?,?,?,?,?)";
         return query;
     }
 
     @Override
-    protected String generateUpdateQuery(Inventory entity) {
-        String tableName = "inventory";
-        String setIdentifiers = "msrp=?";
-        String condition = "inventory_id = ?";
-        String query = "UPDATE " + tableName + " SET " + setIdentifiers + " WHERE " + condition;
+    protected String generateUpdateQuery() {
+        String query = "UPDATE " + getTableName() + " SET msrp=? WHERE inventory_id=?";
         return query;
     }
 

@@ -23,20 +23,14 @@ public class ConditionDAO extends BaseDAO<Condition> {
     }
 
     @Override
-    protected String generateInsertQuery(Condition entity) {
-        String tableName = "conditions";
-        String columns = "condition";
-        String values = "?";
-        String query = "INSERT INTO " + tableName + " (" + columns + ") VALUES (" + values + ")";
+    protected String generateInsertQuery() {
+        String query = "INSERT INTO " + getTableName() + " (`condition`) VALUES (?)";
         return query;
     }
 
     @Override
-    protected String generateUpdateQuery(Condition entity) {
-        String tableName = "conditions";
-        String setIdentifiers = "condition=?";
-        String condition = "condition_id = ?";
-        String query = "UPDATE " + tableName + " SET " + setIdentifiers + " WHERE " + condition;
+    protected String generateUpdateQuery() {
+        String query = "UPDATE " + getTableName() + " SET `condition`=?, `condition_id`=? WHERE `condition_id`=?";
         return query;
     }
 

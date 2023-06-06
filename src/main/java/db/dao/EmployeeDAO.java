@@ -22,25 +22,17 @@ public class EmployeeDAO extends BaseDAO<Employee> {
         ps.setString(1, entity.getPosition());
         ps.setInt(2, entity.getSalary());
         ps.setInt(3, entity.getPersonID());
-
-
     }
 
     @Override
-    protected String generateInsertQuery(Employee entity) {
-        String tableName = "employees";
-        String columns = "position,salary,person_id";
-        String values = "?,?,?";
-        String query = "INSERT INTO " + tableName + " (" + columns + ") VALUES (" + values + ")";
+    protected String generateInsertQuery() {
+        String query = "INSERT INTO " + getTableName() + " (position, salary, person_id) VALUES (?, ?, ?)";
         return query;
     }
 
     @Override
-    protected String generateUpdateQuery(Employee entity) {
-        String tableName = "employees";
-        String setIdentifiers = "position=?";
-        String condition = "employee_id = ?";
-        String query = "UPDATE " + tableName + " SET " + setIdentifiers + " WHERE " + condition;
+    protected String generateUpdateQuery() {
+        String query = "UPDATE " + getTableName() + " SET position=? WHERE employee_id=?";
         return query;
     }
 

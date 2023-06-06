@@ -24,20 +24,14 @@ public class CustomerDAO extends BaseDAO<Customer> {
     }
 
     @Override
-    protected String generateInsertQuery(Customer entity) {
-        String tableName = "customers";
-        String columns = "vip_status,person_id";
-        String values = "?,?";
-        String query = "INSERT INTO " + tableName + " (" + columns + ") VALUES (" + values + ")";
+    protected String generateInsertQuery() {
+        String query = "INSERT INTO " + getTableName() + " (vip_status, person_id) VALUES (?, ?)";
         return query;
     }
 
     @Override
-    protected String generateUpdateQuery(Customer entity) {
-        String tableName = "customers";
-        String setIdentifiers = "vip_status=?";
-        String condition = "customer_id = ?";
-        String query = "UPDATE " + tableName + " SET " + setIdentifiers + " WHERE " + condition;
+    protected String generateUpdateQuery() {
+        String query = "UPDATE " + getTableName() + " SET vip_status=? WHERE customer_id=?";
         return query;
     }
 

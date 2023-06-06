@@ -24,20 +24,14 @@ public class CityDAO extends BaseDAO<City> {
     }
 
     @Override
-    protected String generateInsertQuery(City entity) {
-        String tableName = "cities";
-        String columns = "city";
-        String values = "?";
-        String query = "INSERT INTO " + tableName + " (" + columns + ") VALUES (" + values + ")";
+    protected String generateInsertQuery() {
+        String query = "INSERT INTO " + getTableName() + " (city) VALUES (?)";
         return query;
     }
 
     @Override
-    protected String generateUpdateQuery(City entity) {
-        String tableName = "cities";
-        String setIdentifiers = "city=?";
-        String condition = "city_id = ?";
-        String query = "UPDATE " + tableName + " SET " + setIdentifiers + " WHERE " + condition;
+    protected String generateUpdateQuery() {
+        String query = "UPDATE " + getTableName() + " SET city=? WHERE city_id=?";
         return query;
     }
 

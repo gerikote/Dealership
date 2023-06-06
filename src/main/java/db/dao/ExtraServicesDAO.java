@@ -26,20 +26,14 @@ public class ExtraServicesDAO extends BaseDAO<ExtraServices> {
     }
 
     @Override
-    protected String generateInsertQuery(ExtraServices entity) {
-        String tableName = "extra_services";
-        String columns = "sevice_name,service_description,price";
-        String values = "?,?,?";
-        String query = "INSERT INTO " + tableName + " (" + columns + ") VALUES (" + values + ")";
+    protected String generateInsertQuery() {
+        String query = "INSERT INTO " + getTableName() + " (sevice_name, service_description, price) VALUES (?, ?, ?)";
         return query;
     }
 
     @Override
-    protected String generateUpdateQuery(ExtraServices entity) {
-        String tableName = "extra_services";
-        String setIdentifiers = "price=?";
-        String condition = "service_id = ?";
-        String query = "UPDATE " + tableName + " SET " + setIdentifiers + " WHERE " + condition;
+    protected String generateUpdateQuery() {
+        String query = "UPDATE " + getTableName() + " SET price=? WHERE service_id=?";
         return query;
     }
 

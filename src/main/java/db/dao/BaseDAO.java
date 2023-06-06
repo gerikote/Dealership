@@ -1,6 +1,6 @@
 package db.dao;
 
-import Interfaces.IBaseDao;
+import db.interfaces.IBaseDao;
 import db.conection.ConnectionPool;
 
 import java.sql.*;
@@ -11,18 +11,19 @@ public abstract class BaseDAO<T> implements IBaseDao<T> {
     private ConnectionPool connectionPool;
 
     protected abstract String getTableName();
-    protected  abstract String getIdName();
+
+    protected abstract String getIdName();
 
     protected abstract void setParameters(PreparedStatement ps, T entity) throws SQLException;
 
-    protected abstract String generateInsertQuery(T entity);
+    protected abstract String generateInsertQuery();
 
-    protected abstract String generateUpdateQuery(T entity);
+    protected abstract String generateUpdateQuery();
 
     protected abstract T mapResultSetToObject(ResultSet rs) throws SQLException;
 
     public BaseDAO() {
-        connectionPool = new ConnectionPool();
+        connectionPool = ConnectionPool.getInstance();
     }
 
     public List<T> getAll() {
@@ -79,7 +80,7 @@ public abstract class BaseDAO<T> implements IBaseDao<T> {
 
         try {
             connection = connectionPool.getConnection();
-            String query = "DELETE FROM " + getTableName() + " WHERE " +getIdName() + " = ?";
+            String query = "DELETE FROM " + getTableName() + " WHERE " + getIdName() + " = ?";
             ps = connection.prepareStatement(query);
             ps.setInt(1, id);
             ps.executeUpdate();
@@ -97,7 +98,7 @@ public abstract class BaseDAO<T> implements IBaseDao<T> {
 
         try {
             connection = connectionPool.getConnection();
-            String query = generateInsertQuery(entity);
+            String query = generateInsertQuery();
             ps = connection.prepareStatement(query);
             setParameters(ps, entity);
             ps.executeUpdate();
@@ -112,17 +113,17 @@ public abstract class BaseDAO<T> implements IBaseDao<T> {
         Connection connection = null;
         PreparedStatement ps = null;
 
-        try{
-            connection=connectionPool.getConnection();
-            String query=generateUpdateQuery(entity);
+        try {
+            connection = connectionPool.getConnection();
+            String query = generateUpdateQuery();
 
-            ps=connection.prepareStatement(query);
-            setParameters(ps,entity);
+            ps = connection.prepareStatement(query);
+            setParameters(ps, entity);
             ps.executeUpdate();
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
-            closeResources(connection,ps);
+        } finally {
+            closeResources(connection, ps);
         }
     }
 
@@ -154,5 +155,4 @@ public abstract class BaseDAO<T> implements IBaseDao<T> {
             e.printStackTrace();
         }
     }
-
 }
