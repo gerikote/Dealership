@@ -18,8 +18,11 @@ public class PaymentMethodDAO extends BaseDAO<PaymentMethod> {
     }
 
     @Override
-    protected void setParameters(PreparedStatement ps, PaymentMethod entity) throws SQLException {
+    protected void setParameters(PreparedStatement ps, PaymentMethod entity, boolean isUpdate) throws SQLException {
         ps.setString(1, "payment_method");
+        if (isUpdate) {
+            ps.setInt(2, entity.getPaymentMethodId());
+        }
     }
 
     @Override
@@ -39,9 +42,10 @@ public class PaymentMethodDAO extends BaseDAO<PaymentMethod> {
         int id = rs.getInt("payment_method_id");
         String paymentMethod = rs.getString("payment_method");
 
-       PaymentMethod paymentMethod1= new PaymentMethod();
+        PaymentMethod paymentMethod1 = new PaymentMethod();
         paymentMethod1.setPaymentMethodId(id);
         paymentMethod1.setPaymentMethod(paymentMethod);
 
-        return paymentMethod1;    }
+        return paymentMethod1;
+    }
 }

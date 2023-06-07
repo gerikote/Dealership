@@ -9,8 +9,7 @@ public class ExtraServices {
     public ExtraServices() {
     }
 
-    public ExtraServices(int serviceId, String serviceName, String serviceDescription, int price) {
-        this.serviceId = serviceId;
+    public ExtraServices(String serviceName, String serviceDescription, int price) {
         this.serviceName = serviceName;
         this.serviceDescription = serviceDescription;
         this.price = price;

@@ -15,14 +15,18 @@ public class AddressDAO extends BaseDAO<Address> {
 
     @Override
     protected String getIdName() {
-        return "addresses_id";
+        return "address_id";
     }
 
     @Override
-    protected void setParameters(PreparedStatement ps, Address entity) throws SQLException {
+    protected void setParameters(PreparedStatement ps, Address entity, boolean isUpdate) throws SQLException {
         ps.setString(1, entity.getAddress());
         ps.setString(2, entity.getZipCode());
         ps.setInt(3, entity.getCityID());
+
+        if (isUpdate) {
+            ps.setInt(4, entity.getAddressID());
+        }
     }
 
     @Override
@@ -33,7 +37,7 @@ public class AddressDAO extends BaseDAO<Address> {
 
     @Override
     protected String generateUpdateQuery() {
-        String query = "UPDATE " + getTableName() + " SET address=? WHERE address_id=?";
+        String query = "UPDATE " + getTableName() + " SET address=?, zip_code=?, city_id=? WHERE address_id=?";
         return query;
     }
 

@@ -18,10 +18,13 @@ public class EmployeeDAO extends BaseDAO<Employee> {
     }
 
     @Override
-    protected void setParameters(PreparedStatement ps, Employee entity) throws SQLException {
+    protected void setParameters(PreparedStatement ps, Employee entity, boolean isUpdate) throws SQLException {
         ps.setString(1, entity.getPosition());
         ps.setInt(2, entity.getSalary());
         ps.setInt(3, entity.getPersonID());
+        if (isUpdate) {
+            ps.setInt(4, entity.getEmployeeId());
+        }
     }
 
     @Override
@@ -32,7 +35,7 @@ public class EmployeeDAO extends BaseDAO<Employee> {
 
     @Override
     protected String generateUpdateQuery() {
-        String query = "UPDATE " + getTableName() + " SET position=? WHERE employee_id=?";
+        String query = "UPDATE " + getTableName() + " SET position=?,salary=?,person_id=? WHERE employee_id=?";
         return query;
     }
 

@@ -18,8 +18,11 @@ public class ConditionDAO extends BaseDAO<Condition> {
     }
 
     @Override
-    protected void setParameters(PreparedStatement ps, Condition entity) throws SQLException {
+    protected void setParameters(PreparedStatement ps, Condition entity, boolean isUpdate) throws SQLException {
         ps.setString(1, entity.getCondition());
+        if (isUpdate) {
+            ps.setInt(2, entity.getConditionId());
+        }
     }
 
     @Override
@@ -30,7 +33,7 @@ public class ConditionDAO extends BaseDAO<Condition> {
 
     @Override
     protected String generateUpdateQuery() {
-        String query = "UPDATE " + getTableName() + " SET `condition`=?, `condition_id`=? WHERE `condition_id`=?";
+        String query = "UPDATE " + getTableName() + " SET `condition`=? WHERE `condition_id`=?";
         return query;
     }
 

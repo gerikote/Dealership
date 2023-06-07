@@ -18,22 +18,25 @@ public class ExtraServicesDAO extends BaseDAO<ExtraServices> {
     }
 
     @Override
-    protected void setParameters(PreparedStatement ps, ExtraServices entity) throws SQLException {
+    protected void setParameters(PreparedStatement ps, ExtraServices entity, boolean isUpdate) throws SQLException {
         ps.setString(1, entity.getServiceName());
         ps.setString(2, entity.getServiceDescription());
         ps.setInt(3, entity.getPrice());
+        if (isUpdate) {
+            ps.setInt(4, entity.getServiceId());
+        }
 
     }
 
     @Override
     protected String generateInsertQuery() {
-        String query = "INSERT INTO " + getTableName() + " (sevice_name, service_description, price) VALUES (?, ?, ?)";
+        String query = "INSERT INTO " + getTableName() + " (service_name, service_description, price) VALUES (?, ?, ?)";
         return query;
     }
 
     @Override
     protected String generateUpdateQuery() {
-        String query = "UPDATE " + getTableName() + " SET price=? WHERE service_id=?";
+        String query = "UPDATE " + getTableName() + " SET service_name = ? , service_description=? , price=?  WHERE service_id=?";
         return query;
     }
 

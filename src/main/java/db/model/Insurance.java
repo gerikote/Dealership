@@ -8,8 +8,7 @@ public class Insurance {
     public Insurance() {
     }
 
-    public Insurance(int insuranceId, String insuranceCompany, int coverage) {
-        this.insuranceId = insuranceId;
+    public Insurance(String insuranceCompany, int coverage) {
         this.insuranceCompany = insuranceCompany;
         this.coverage = coverage;
     }

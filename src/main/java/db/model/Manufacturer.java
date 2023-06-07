@@ -9,8 +9,7 @@ public class Manufacturer {
     public Manufacturer() {
     }
 
-    public Manufacturer(int manufacturerId, String manufacturer, String phoneNumber, String email) {
-        this.manufacturerId = manufacturerId;
+    public Manufacturer(String manufacturer, String phoneNumber, String email) {
         this.manufacturer = manufacturer;
         this.phoneNumber = phoneNumber;
         this.email = email;

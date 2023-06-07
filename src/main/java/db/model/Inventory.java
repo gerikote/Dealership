@@ -18,8 +18,7 @@ public class Inventory {
     public Inventory() {
     }
 
-    public Inventory(int inventoryId, String model, int year, int mileage, String fuel, int msrp, String vin, boolean inStock, int manufacturerId, int colorId, int conditionId) {
-        this.inventoryId = inventoryId;
+    public Inventory(String model, int year, int mileage, String fuel, int msrp, String vin, boolean inStock, int manufacturerId, int colorId, int conditionId) {
         this.model = model;
         this.year = year;
         this.mileage = mileage;

@@ -16,14 +16,13 @@ public class Person {
     public Person() {
     }
 
-    public Person(int personID, String firstName, String lastName, Date dateOfBirth, String phoneNumber, String email, int addressID) {
-        this.personID = personID;
+    public Person(String firstName, String lastName, Date dateOfBirth, String phoneNumber, String email, int addressID) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
         this.phoneNumber = phoneNumber;
         this.email = email;
-        this.addressID= addressID;
+        this.addressID = addressID;
     }
 
     public int getPersonID() {

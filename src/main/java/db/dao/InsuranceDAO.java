@@ -18,9 +18,12 @@ public class InsuranceDAO extends BaseDAO<Insurance> {
     }
 
     @Override
-    protected void setParameters(PreparedStatement ps, Insurance entity) throws SQLException {
+    protected void setParameters(PreparedStatement ps, Insurance entity, boolean isUpdate) throws SQLException {
         ps.setString(1, entity.getInsuranceCompany());
-        ps.setInt(2,entity.getCoverage());
+        ps.setInt(2, entity.getCoverage());
+        if (isUpdate) {
+            ps.setInt(3, entity.getInsuranceId());
+        }
     }
 
     @Override
@@ -31,7 +34,7 @@ public class InsuranceDAO extends BaseDAO<Insurance> {
 
     @Override
     protected String generateUpdateQuery() {
-        String query = "UPDATE " + getTableName() + " SET insurance_company=? WHERE insurance_id=?";
+        String query = "UPDATE " + getTableName() + " SET insurance_company=?, coverage=? WHERE insurance_id=?";
         return query;
     }
 

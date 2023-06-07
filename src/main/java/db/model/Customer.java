@@ -11,8 +11,7 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(int customerId, boolean vipStatus, int personID) {
-        this.customerId = customerId;
+    public Customer(boolean vipStatus, int personID) {
         this.vipStatus = vipStatus;
         this.personID = personID;
     }

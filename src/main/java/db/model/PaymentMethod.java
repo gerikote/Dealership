@@ -7,8 +7,7 @@ public class PaymentMethod {
     public PaymentMethod() {
     }
 
-    public PaymentMethod(int paymentMethodId, String paymentMethod) {
-        this.paymentMethodId = paymentMethodId;
+    public PaymentMethod(String paymentMethod) {
         this.paymentMethod = paymentMethod;
     }
 

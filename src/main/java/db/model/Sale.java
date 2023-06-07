@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 public class Sale {
     private int saleId;
-    private double price;
+    private int price;
     private Date date;
     private int employeeId;
     private int customerId;
@@ -16,8 +16,7 @@ public class Sale {
     public Sale() {
     }
 
-    public Sale(int saleId, double price, Date date, int employeeId, int customerId, int inventoryId, int insuranceId, int paymentMethodId) {
-        this.saleId = saleId;
+    public Sale(int price, Date date, int employeeId, int customerId, int inventoryId, int insuranceId, int paymentMethodId) {
         this.price = price;
         this.date = date;
         this.employeeId = employeeId;
@@ -35,11 +34,11 @@ public class Sale {
         this.saleId = saleId;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

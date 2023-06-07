@@ -7,8 +7,7 @@ public class Color {
     public Color() {
     }
 
-    public Color(int colorId, String color) {
-        this.colorId = colorId;
+    public Color(String color) {
         this.color = color;
     }
 

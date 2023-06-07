@@ -18,7 +18,7 @@ public class InventoryDAO extends BaseDAO<Inventory> {
     }
 
     @Override
-    protected void setParameters(PreparedStatement ps, Inventory entity) throws SQLException {
+    protected void setParameters(PreparedStatement ps, Inventory entity, boolean isUpdate) throws SQLException {
         ps.setString(1, entity.getModel());
         ps.setInt(2, entity.getYear());
         ps.setInt(3, entity.getMileage());
@@ -29,6 +29,9 @@ public class InventoryDAO extends BaseDAO<Inventory> {
         ps.setInt(8, entity.getManufacturerId());
         ps.setInt(9, entity.getColorId());
         ps.setInt(10, entity.getColorId());
+        if (isUpdate) {
+            ps.setInt(11, entity.getInventoryId());
+        }
 
 
     }
@@ -41,7 +44,7 @@ public class InventoryDAO extends BaseDAO<Inventory> {
 
     @Override
     protected String generateUpdateQuery() {
-        String query = "UPDATE " + getTableName() + " SET msrp=? WHERE inventory_id=?";
+        String query = "UPDATE " + getTableName() + " SET  model=?, year=?, mileage=?, fuel=?, msrp=?, vin=?, in_stock=?, manufacturer_id=?, color_id=?, condition_id=? WHERE inventory_id=?";
         return query;
     }
 

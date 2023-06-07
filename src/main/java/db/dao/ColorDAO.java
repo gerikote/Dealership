@@ -19,8 +19,11 @@ public class ColorDAO extends BaseDAO<Color> {
     }
 
     @Override
-    protected void setParameters(PreparedStatement ps, Color entity) throws SQLException {
+    protected void setParameters(PreparedStatement ps, Color entity, boolean isUpdate) throws SQLException {
         ps.setString(1, entity.getColor());
+        if (isUpdate) {
+            ps.setInt(2, entity.getColorId());
+        }
     }
 
     @Override

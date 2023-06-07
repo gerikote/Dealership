@@ -25,15 +25,18 @@ public class ManufacturerDAO extends BaseDAO<Manufacturer> {
     }
 
     @Override
-    protected void setParameters(PreparedStatement ps, Manufacturer entity) throws SQLException {
+    protected void setParameters(PreparedStatement ps, Manufacturer entity, boolean isUpdate) throws SQLException {
         ps.setString(1, entity.getManufacturer());
         ps.setString(2, entity.getPhoneNumber());
         ps.setString(3, entity.getEmail());
+        if (isUpdate) {
+            ps.setInt(4, entity.getManufacturerId());
+        }
     }
 
     @Override
     protected String generateUpdateQuery() {
-        String query = "UPDATE " + getTableName() + " SET email=?, phone_number=? WHERE manufacturer_id=?";
+        String query = "UPDATE " + getTableName() + " SET  manufacturer = ? , phone_number =? , email =? WHERE manufacturer_id=?";
         return query;
     }
 

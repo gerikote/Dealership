@@ -19,15 +19,17 @@ public class SaleDAO extends BaseDAO<Sale> {
     }
 
     @Override
-    protected void setParameters(PreparedStatement ps, Sale entity) throws SQLException {
-        ps.setInt(1, entity.getSaleId());
-        ps.setDouble(2, entity.getPrice());
-        ps.setDate(3, entity.getDate());
-        ps.setInt(4, entity.getEmployeeId());
-        ps.setInt(5, entity.getCustomerId());
-        ps.setInt(6, entity.getInventoryId());
-        ps.setInt(7, entity.getInsuranceId());
-        ps.setInt(8, entity.getPaymentMethodId());
+    protected void setParameters(PreparedStatement ps, Sale entity, boolean isUpdate) throws SQLException {
+        ps.setInt(1, entity.getPrice());
+        ps.setDate(2, entity.getDate());
+        ps.setInt(3, entity.getEmployeeId());
+        ps.setInt(4, entity.getCustomerId());
+        ps.setInt(5, entity.getInventoryId());
+        ps.setInt(6, entity.getInsuranceId());
+        ps.setInt(7, entity.getPaymentMethodId());
+        if (isUpdate) {
+            ps.setInt(8, entity.getSaleId());
+        }
     }
 
     @Override
@@ -38,14 +40,14 @@ public class SaleDAO extends BaseDAO<Sale> {
 
     @Override
     protected String generateUpdateQuery() {
-        String query = "UPDATE " + getTableName() + " SET price=? WHERE sale_id = ?";
+        String query = "UPDATE " + getTableName() + " SET price=?, date=?, employee_id=?, customer_id=?, inventory_id=?, insurance_id=?, payment_method_id=? WHERE sale_id = ?";
         return query;
     }
 
     @Override
     protected Sale mapResultSetToObject(ResultSet rs) throws SQLException {
         int saleId = rs.getInt("sale_id");
-        double price = rs.getDouble("price");
+        int price = rs.getInt("price");
         Date date = rs.getDate("date");
         int employeeId = rs.getInt("employee_id");
         int customerId = rs.getInt("customer_id");

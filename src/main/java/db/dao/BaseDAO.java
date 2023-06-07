@@ -14,7 +14,7 @@ public abstract class BaseDAO<T> implements IBaseDao<T> {
 
     protected abstract String getIdName();
 
-    protected abstract void setParameters(PreparedStatement ps, T entity) throws SQLException;
+    protected abstract void setParameters(PreparedStatement ps, T entity, boolean isUpdate) throws SQLException;
 
     protected abstract String generateInsertQuery();
 
@@ -100,7 +100,7 @@ public abstract class BaseDAO<T> implements IBaseDao<T> {
             connection = connectionPool.getConnection();
             String query = generateInsertQuery();
             ps = connection.prepareStatement(query);
-            setParameters(ps, entity);
+            setParameters(ps, entity, false);
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -118,7 +118,7 @@ public abstract class BaseDAO<T> implements IBaseDao<T> {
             String query = generateUpdateQuery();
 
             ps = connection.prepareStatement(query);
-            setParameters(ps, entity);
+            setParameters(ps, entity, true);
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

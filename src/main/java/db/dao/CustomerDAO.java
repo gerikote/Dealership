@@ -18,9 +18,12 @@ public class CustomerDAO extends BaseDAO<Customer> {
     }
 
     @Override
-    protected void setParameters(PreparedStatement ps, Customer entity) throws SQLException {
+    protected void setParameters(PreparedStatement ps, Customer entity, boolean isUpdate) throws SQLException {
         ps.setBoolean(1, entity.getVipStatus());
         ps.setInt(2, entity.getPersonID());
+        if (isUpdate) {
+            ps.setInt(3, entity.getCustomerId());
+        }
     }
 
     @Override
@@ -31,7 +34,7 @@ public class CustomerDAO extends BaseDAO<Customer> {
 
     @Override
     protected String generateUpdateQuery() {
-        String query = "UPDATE " + getTableName() + " SET vip_status=? WHERE customer_id=?";
+        String query = "UPDATE " + getTableName() + " SET vip_status=?, person_id WHERE customer_id=?";
         return query;
     }
 

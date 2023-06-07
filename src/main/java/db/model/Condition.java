@@ -7,8 +7,7 @@ public class Condition {
     public Condition() {
     }
 
-    public Condition(int conditionId, String condition) {
-        this.conditionId = conditionId;
+    public Condition(String condition) {
         this.condition = condition;
     }
 

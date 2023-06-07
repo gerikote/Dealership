@@ -19,8 +19,11 @@ public class CityDAO extends BaseDAO<City> {
     }
 
     @Override
-    protected void setParameters(PreparedStatement ps, City entity) throws SQLException {
+    protected void setParameters(PreparedStatement ps, City entity, boolean isUpdate) throws SQLException {
         ps.setString(1, entity.getCity());
+        if (isUpdate) {
+            ps.setInt(2, entity.getCityID());
+        }
     }
 
     @Override

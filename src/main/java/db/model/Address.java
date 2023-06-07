@@ -9,8 +9,7 @@ public class Address {
     public Address() {
     }
 
-    public Address(int addressID, String address, String zipCode, int cityID) {
-        this.addressID = addressID;
+    public Address(String address, String zipCode, int cityID) {
         this.address = address;
         this.zipCode = zipCode;
         this.cityID = cityID;
