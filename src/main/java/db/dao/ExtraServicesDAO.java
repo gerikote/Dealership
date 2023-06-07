@@ -25,7 +25,6 @@ public class ExtraServicesDAO extends BaseDAO<ExtraServices> {
         if (isUpdate) {
             ps.setInt(4, entity.getServiceId());
         }
-
     }
 
     @Override
