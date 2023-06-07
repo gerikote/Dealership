@@ -3,6 +3,8 @@ import db.model.Address;
 import db.model.City;
 import db.model.Condition;
 import db.model.Manufacturer;
+import db.services.AddressService;
+import db.services.SaleService;
 
 public class Main {
     public static void main(String[] args){
@@ -70,7 +72,20 @@ public class Main {
         conditionDAO.update(cond1);
         System.out.println(conditionDAO.getAll());
 
+        AddressService addressService=new AddressService();
+        //get all  - get by id
+        System.out.println();
+        System.out.println(addressService.getAllAddresses());
+        System.out.println(addressService.getAddressByID(1));
 
+        //update address
+        Address address1 = addressService.getAddressByID(1);
+        address1.setZipCode("1111");
+        addressService.updateAddress(address1);
+        System.out.println(addressService.getAddressByID(1));
+
+        SaleService saleService = new SaleService();
+        System.out.println(saleService.getAllSales());
 
 
 

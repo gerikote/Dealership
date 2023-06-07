@@ -89,4 +89,18 @@ public class Sale {
     public void setPaymentMethodId(int paymentMethodId) {
         this.paymentMethodId = paymentMethodId;
     }
+
+    @Override
+    public String toString() {
+        return "Sale{" +
+                "saleId=" + saleId +
+                ", price=" + price +
+                ", date=" + date +
+                ", employeeId=" + employeeId +
+                ", customerId=" + customerId +
+                ", inventoryId=" + inventoryId +
+                ", insuranceId=" + insuranceId +
+                ", paymentMethodId=" + paymentMethodId +
+                '}';
+    }
 }
