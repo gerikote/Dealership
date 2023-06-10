@@ -1,6 +1,6 @@
 package db.conection;
 
-import utils.DbConfiguration;
+import utils.DBConfiguration;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -67,9 +67,9 @@ public class ConnectionPool {
     }
 
     private Connection createNewConnection() throws SQLException {
-        String url = DbConfiguration.getUrl();
-        String username = DbConfiguration.getUsername();
-        String password = DbConfiguration.getPassword();
+        String url = DBConfiguration.getUrl();
+        String username = DBConfiguration.getUsername();
+        String password = DBConfiguration.getPassword();
         return DriverManager.getConnection(url, username, password);
     }
 

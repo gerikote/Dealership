@@ -40,12 +40,9 @@ public class ColorDAO extends BaseDAO<Color> {
 
     @Override
     protected Color mapResultSetToObject(ResultSet rs) throws SQLException {
-        int id = rs.getInt("color_id");
-        String colorName = rs.getString("color");
-
         Color color = new Color();
-        color.setColorId(id);
-        color.setColor(colorName);
+        color.setColorId(rs.getInt("color_id"));
+        color.setColor(rs.getString("color"));
 
         return color;
     }

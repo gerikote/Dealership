@@ -23,7 +23,6 @@ public class AddressDAO extends BaseDAO<Address> {
         ps.setString(1, entity.getAddress());
         ps.setString(2, entity.getZipCode());
         ps.setInt(3, entity.getCityID());
-
         if (isUpdate) {
             ps.setInt(4, entity.getAddressID());
         }
@@ -43,17 +42,11 @@ public class AddressDAO extends BaseDAO<Address> {
 
     @Override
     protected Address mapResultSetToObject(ResultSet rs) throws SQLException {
-        int addressID = rs.getInt("address_id");
-        String address = rs.getString("address");
-        String zipCode = rs.getString("zip_code");
-        int cityId = rs.getInt("city_id");
-
         Address addressObj = new Address();
-        addressObj.setAddressID(addressID);
-        addressObj.setCityID(cityId);
-        addressObj.setAddress(address);
-        addressObj.setZipCode(zipCode);
-
+        addressObj.setAddressID(rs.getInt("address_id"));
+        addressObj.setCityID(rs.getInt("city_id"));
+        addressObj.setAddress(rs.getString("address"));
+        addressObj.setZipCode(rs.getString("zip_code"));
         return addressObj;
     }
 }

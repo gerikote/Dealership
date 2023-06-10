@@ -7,38 +7,17 @@ import db.services.AddressService;
 import db.services.SaleService;
 
 public class Main {
-    public static void main(String[] args){
-
-        /*
-        PersonDAO personDAO = new PersonDAO();
-        System.out.println(personDAO.getByID(1));
-        System.out.println();
-        System.out.println(personDAO.getAll());
-
-        ManufacturerDAO manufacturerDAO = new ManufacturerDAO();
-        System.out.println(manufacturerDAO.getAll());
-        System.out.println(manufacturerDAO.getByID(1));
-
-        Manufacturer mn = new Manufacturer(20,"Accura","111111","acura@gmail.com");
-        manufacturerDAO.save(mn);
-        System.out.println(manufacturerDAO.getByID(20));
-
-        EmployeeDAO employeeDAO = new EmployeeDAO();
-        System.out.println(employeeDAO.getAll());
-        System.out.println(employeeDAO.getByID(1));
-
-         */
-
+    public static void main(String[] args) {
         //Update address
         AddressDAO addressDAO = new AddressDAO();
-        Address address =addressDAO.getByID(1);
+        Address address = addressDAO.getByID(1);
         address.setAddress("new address");
         address.setZipCode("00000");
         address.setCityID(2);
         addressDAO.update(address);
         System.out.println(addressDAO.getAll());
         //insert address
-        Address newAddress = new Address("testadress","0000",1);
+        Address newAddress = new Address("testadress", "0000", 1);
         addressDAO.save(newAddress);
         System.out.println(addressDAO.getAll());
         //delete address
@@ -56,7 +35,7 @@ public class Main {
         //Delete address
         cityDao.deleteByID(11);
         //update city
-        City city1=cityDao.getByID(1);
+        City city1 = cityDao.getByID(1);
         city1.setCity("New York City");
         cityDao.update(city1);
         System.out.println(cityDao.getAll());
@@ -72,7 +51,7 @@ public class Main {
         conditionDAO.update(cond1);
         System.out.println(conditionDAO.getAll());
 
-        AddressService addressService=new AddressService();
+        AddressService addressService = new AddressService();
         //get all  - get by id
         System.out.println();
         System.out.println(addressService.getAllAddresses());
@@ -86,8 +65,5 @@ public class Main {
 
         SaleService saleService = new SaleService();
         System.out.println(saleService.getAllSales());
-
-
-
     }
 }

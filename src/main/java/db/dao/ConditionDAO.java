@@ -39,13 +39,9 @@ public class ConditionDAO extends BaseDAO<Condition> {
 
     @Override
     protected Condition mapResultSetToObject(ResultSet rs) throws SQLException {
-        int id = rs.getInt("condition_id");
-        String conditionName = rs.getString("condition");
-
         Condition condition = new Condition();
-        condition.setConditionId(id);
-        condition.setCondition(conditionName);
-
+        condition.setConditionId(rs.getInt("condition_id"));
+        condition.setCondition(rs.getString("condition"));
         return condition;
     }
 }

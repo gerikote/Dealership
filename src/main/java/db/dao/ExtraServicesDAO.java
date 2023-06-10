@@ -41,17 +41,11 @@ public class ExtraServicesDAO extends BaseDAO<ExtraServices> {
 
     @Override
     protected ExtraServices mapResultSetToObject(ResultSet rs) throws SQLException {
-        int id = rs.getInt("service_id");
-        String serviceName = rs.getString("service_name");
-        String serviceDescription = rs.getString("service_description");
-        int price = rs.getInt("price");
-
         ExtraServices extraServices = new ExtraServices();
-        extraServices.setServiceId(id);
-        extraServices.setServiceName(serviceName);
-        extraServices.setServiceDescription(serviceDescription);
-        extraServices.setPrice(price);
-
+        extraServices.setServiceId(rs.getInt("service_id"));
+        extraServices.setServiceName(rs.getString("service_name"));
+        extraServices.setServiceDescription(rs.getString("service_description"));
+        extraServices.setPrice(rs.getInt("price"));
         return extraServices;
     }
 }

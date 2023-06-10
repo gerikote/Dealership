@@ -40,13 +40,9 @@ public class CityDAO extends BaseDAO<City> {
 
     @Override
     protected City mapResultSetToObject(ResultSet rs) throws SQLException {
-        int id = rs.getInt("city_id");
-        String cityName = rs.getString("city");
-
         City city = new City();
-        city.setCityID(id);
-        city.setCity(cityName);
-
+        city.setCityID(rs.getInt("city_id"));
+        city.setCity(rs.getString("city"));
         return city;
     }
 }

@@ -41,17 +41,11 @@ public class EmployeeDAO extends BaseDAO<Employee> {
 
     @Override
     protected Employee mapResultSetToObject(ResultSet rs) throws SQLException {
-        int id = rs.getInt("employee_id");
-        String position = rs.getString("position");
-        int salary = rs.getInt("salary");
-        int person_id = rs.getInt("person_id");
-
         Employee employee = new Employee();
-        employee.setEmployeeID(id);
-        employee.setPosition(position);
-        employee.setSalary(salary);
-        employee.setPersonID(person_id);
-
+        employee.setEmployeeID(rs.getInt("employee_id"));
+        employee.setPosition(rs.getString("position"));
+        employee.setSalary(rs.getInt("salary"));
+        employee.setPersonID(rs.getInt("person_id"));
         return employee;
     }
 }

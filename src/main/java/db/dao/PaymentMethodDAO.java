@@ -39,13 +39,9 @@ public class PaymentMethodDAO extends BaseDAO<PaymentMethod> {
 
     @Override
     protected PaymentMethod mapResultSetToObject(ResultSet rs) throws SQLException {
-        int id = rs.getInt("payment_method_id");
-        String paymentMethod = rs.getString("payment_method");
-
-        PaymentMethod paymentMethod1 = new PaymentMethod();
-        paymentMethod1.setPaymentMethodId(id);
-        paymentMethod1.setPaymentMethod(paymentMethod);
-
-        return paymentMethod1;
+        PaymentMethod paymentMethod = new PaymentMethod();
+        paymentMethod.setPaymentMethodId(rs.getInt("payment_method_id"));
+        paymentMethod.setPaymentMethod(rs.getString("payment_method"));
+        return paymentMethod;
     }
 }

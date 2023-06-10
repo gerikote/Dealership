@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
-public class DbConfiguration {
+public class DBConfiguration {
     private static String url;
     private static String username;
     private static String password;

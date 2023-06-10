@@ -40,15 +40,10 @@ public class CustomerDAO extends BaseDAO<Customer> {
 
     @Override
     protected Customer mapResultSetToObject(ResultSet rs) throws SQLException {
-        int id = rs.getInt("customer_id");
-        Boolean isVip = rs.getBoolean("vip_status");
-        int personID = rs.getInt("person_id");
-
         Customer customer = new Customer();
-        customer.setCustomerId(id);
-        customer.setVipStatus(isVip);
-        customer.setPersonID(personID);
-
+        customer.setCustomerId(rs.getInt("customer_id"));
+        customer.setVipStatus(rs.getBoolean("vip_status"));
+        customer.setPersonID(rs.getInt("person_id"));
         return customer;
     }
 }

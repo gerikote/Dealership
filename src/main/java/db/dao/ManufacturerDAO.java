@@ -42,17 +42,11 @@ public class ManufacturerDAO extends BaseDAO<Manufacturer> {
 
     @Override
     protected Manufacturer mapResultSetToObject(ResultSet rs) throws SQLException {
-        int id = rs.getInt("manufacturer_id");
-        String manufacturerName = rs.getString("manufacturer");
-        String phone = rs.getString("phone_number");
-        String email = rs.getString("email");
-
         Manufacturer manufacturer = new Manufacturer();
-        manufacturer.setManufacturerId(id);
-        manufacturer.setManufacturer(manufacturerName);
-        manufacturer.setPhoneNumber(phone);
-        manufacturer.setEmail(email);
-
+        manufacturer.setManufacturerId(rs.getInt("manufacturer_id"));
+        manufacturer.setManufacturer(rs.getString("manufacturer"));
+        manufacturer.setPhoneNumber(rs.getString("phone_number"));
+        manufacturer.setEmail(rs.getString("email"));
         return manufacturer;
     }
 }

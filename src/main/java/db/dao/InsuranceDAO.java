@@ -40,15 +40,10 @@ public class InsuranceDAO extends BaseDAO<Insurance> {
 
     @Override
     protected Insurance mapResultSetToObject(ResultSet rs) throws SQLException {
-        int id = rs.getInt("insurance_id");
-        String company = rs.getString("insurance_company");
-        int coverage = rs.getInt("coverage");
-
         Insurance insurance = new Insurance();
-        insurance.setInsuranceId(id);
-        insurance.setInsuranceCompany(company);
-        insurance.setCoverage(coverage);
-
+        insurance.setInsuranceId(rs.getInt("insurance_id"));
+        insurance.setInsuranceCompany(rs.getString("insurance_company"));
+        insurance.setCoverage(rs.getInt("coverage"));
         return insurance;
     }
 }

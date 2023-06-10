@@ -46,25 +46,15 @@ public class SaleDAO extends BaseDAO<Sale> {
 
     @Override
     protected Sale mapResultSetToObject(ResultSet rs) throws SQLException {
-        int saleId = rs.getInt("sale_id");
-        int price = rs.getInt("price");
-        Date date = rs.getDate("date");
-        int employeeId = rs.getInt("employee_id");
-        int customerId = rs.getInt("customer_id");
-        int inventoryId = rs.getInt("inventory_id");
-        int insuranceId = rs.getInt("insurance_id");
-        int paymentMethodId = rs.getInt("payment_method_id");
-
         Sale sale = new Sale();
-        sale.setSaleId(saleId);
-        sale.setPrice(price);
-        sale.setDate(date);
-        sale.setEmployeeId(employeeId);
-        sale.setCustomerId(customerId);
-        sale.setInventoryId(inventoryId);
-        sale.setInsuranceId(insuranceId);
-        sale.setPaymentMethodId(paymentMethodId);
-
+        sale.setSaleId(rs.getInt("sale_id"));
+        sale.setPrice(rs.getInt("price"));
+        sale.setDate(rs.getDate("date"));
+        sale.setEmployeeId(rs.getInt("employee_id"));
+        sale.setCustomerId(rs.getInt("customer_id"));
+        sale.setInventoryId(rs.getInt("inventory_id"));
+        sale.setInsuranceId(rs.getInt("insurance_id"));
+        sale.setPaymentMethodId(rs.getInt("payment_method_id"));
         return sale;
     }
 }

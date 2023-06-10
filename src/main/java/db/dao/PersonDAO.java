@@ -44,20 +44,13 @@ public class PersonDAO extends BaseDAO<Person> {
 
     @Override
     protected Person mapResultSetToObject(ResultSet rs) throws SQLException {
-        int addressId = rs.getInt("address_id");
-        String firstName = rs.getString("first_name");
-        String lastName = rs.getString("last_name");
-        Date dateOfBirth = rs.getDate("date_of_birth");
-        String phoneNumber = rs.getString("phone_number");
-        String email = rs.getString("email");
-
         Person person = new Person();
-        person.setAddressID(addressId);
-        person.setFirstName(firstName);
-        person.setLastName(lastName);
-        person.setDateOfBirth(dateOfBirth);
-        person.setPhoneNumber(phoneNumber);
-        person.setEmail(email);
+        person.setAddressID(rs.getInt("address_id"));
+        person.setFirstName(rs.getString("first_name"));
+        person.setLastName(rs.getString("last_name"));
+        person.setDateOfBirth(rs.getDate("date_of_birth"));
+        person.setPhoneNumber(rs.getString("phone_number"));
+        person.setEmail(rs.getString("email"));
 
         return person;
     }

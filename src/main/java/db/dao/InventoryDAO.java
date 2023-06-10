@@ -50,31 +50,18 @@ public class InventoryDAO extends BaseDAO<Inventory> {
 
     @Override
     protected Inventory mapResultSetToObject(ResultSet rs) throws SQLException {
-        int id = rs.getInt("inventory_id");
-        String model = rs.getString("model");
-        int year = rs.getInt("year"); // Assuming the column name is "year"
-        int mileage = rs.getInt("mileage");
-        String fuel = rs.getString("fuel");
-        int msrp = rs.getInt("msrp");
-        String vin = rs.getString("vin");
-        boolean inStock = rs.getBoolean("in_stock");
-        int manufacturerId = rs.getInt("manufacturer_id");
-        int colorId = rs.getInt("color_id");
-        int conditionId = rs.getInt("condition_id");
-
         Inventory inventory = new Inventory();
-        inventory.setInventoryId(id);
-        inventory.setModel(model);
-        inventory.setYear(year);
-        inventory.setMileage(mileage);
-        inventory.setFuel(fuel);
-        inventory.setMsrp(msrp);
-        inventory.setVin(vin);
-        inventory.setInStock(inStock);
-        inventory.setManufacturerId(manufacturerId);
-        inventory.setColorId(colorId);
-        inventory.setConditionId(conditionId);
-
+        inventory.setInventoryId(rs.getInt("inventory_id"));
+        inventory.setModel(rs.getString("model"));
+        inventory.setYear(rs.getInt("year"));
+        inventory.setMileage(rs.getInt("mileage"));
+        inventory.setFuel(rs.getString("fuel"));
+        inventory.setMsrp(rs.getInt("msrp"));
+        inventory.setVin(rs.getString("vin"));
+        inventory.setInStock(rs.getBoolean("in_stock"));
+        inventory.setManufacturerId(rs.getInt("manufacturer_id"));
+        inventory.setColorId(rs.getInt("color_id"));
+        inventory.setConditionId(rs.getInt("condition_id"));
         return inventory;
     }
 }
