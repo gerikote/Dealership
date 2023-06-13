@@ -1,8 +1,14 @@
 package db.model;
 
+import jakarta.xml.bind.annotation.*;
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class PaymentMethod {
 
+    @XmlAttribute
     private int paymentMethodId;
+    @XmlElement
     private String paymentMethod;
 
     public PaymentMethod() {

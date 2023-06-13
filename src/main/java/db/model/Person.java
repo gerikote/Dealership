@@ -1,16 +1,30 @@
 package db.model;
 
-import java.sql.Date;
-import java.time.LocalDate;
+import jakarta.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import utils.jaxb.DateAdapter;
 
+
+import java.sql.Date;
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Person {
 
+    @XmlAttribute
     private int personID;
+    @XmlElement
     private String firstName;
+    @XmlElement
     private String lastName;
+    @XmlElement
+    @XmlJavaTypeAdapter(DateAdapter.class)
     private Date dateOfBirth;
+    @XmlElement
     private String phoneNumber;
+    @XmlElement
     private String email;
+    @XmlElement
     private int addressID;
 
     public Person() {

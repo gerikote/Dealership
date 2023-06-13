@@ -1,12 +1,21 @@
 package db.model;
 
-import java.sql.Date;
-import java.time.LocalDate;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.*;
 
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Customer {
 
+    @XmlAttribute
     private int customerId;
+    @XmlElement
     private boolean vipStatus;
+    @XmlElement
     private int personID;
 
     public Customer() {

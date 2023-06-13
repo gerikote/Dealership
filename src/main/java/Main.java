@@ -1,14 +1,22 @@
 import db.dao.*;
-import db.model.Address;
-import db.model.City;
-import db.model.Condition;
-import db.model.Manufacturer;
+import db.model.*;
 import db.services.AddressService;
 import db.services.SaleService;
+import jakarta.xml.bind.JAXBException;
+import utils.DOMParser;
+import utils.XMLValidator;
+import utils.jaxb.DateAdapter;
+import utils.jaxb.JAXBUtils;
+
+import java.io.File;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         //Update address
         AddressDAO addressDAO = new AddressDAO();
         Address address = addressDAO.getByID(1);
@@ -66,5 +74,39 @@ public class Main {
 
         SaleService saleService = new SaleService();
         System.out.println(saleService.getAllSales());
+
+        //validate xml
+        File xmlFile = new File("./src/main/resources/inventory.xml");
+        File xsdSchema = new File("./src/main/resources/inventorySchema.xsd");
+        System.out.println("Is xml file valid? " + XMLValidator.isXMLValid(xmlFile, xsdSchema));
+
+        //DOMParser
+        DOMParser.parseXMLFile("./src/main/resources/inventory.xml");
+
+        //JAXB
+        //Marshall
+        String dateOfBirthString = "2011-01-01";
+        Date dateOfBirth = Date.valueOf(dateOfBirthString);
+        Person person = new Person("Johny", "Doe", dateOfBirth, "1234567890", "john.doe@example.com", 1);
+
+        Sale sale=new Sale(1000,dateOfBirth,1,2,1,1,1);
+
+        Inventory inventory=new Inventory("cx30",2022,10000,"gas",35000,"P1231A232CV",true,1,2,3);
+
+        try {
+            JAXBUtils.marshal(person);
+            JAXBUtils.marshal(sale);
+            JAXBUtils.marshal(inventory);
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+
+        //Unmarshall
+        Inventory invetory2 = JAXBUtils.unmarshal(xmlFile, Inventory.class);
+        System.out.println(invetory2);
+
+        File xmlFilePerson = new File("./src/main/resources/Person.xml");
+        Person person2=JAXBUtils.unmarshal(xmlFilePerson,Person.class);
+        System.out.println(person2.toString());
     }
 }

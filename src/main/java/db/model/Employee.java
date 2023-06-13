@@ -1,13 +1,24 @@
 package db.model;
 
-import java.sql.Date;
-import java.time.LocalDate;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.*;
 
+
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Employee {
 
+    @XmlAttribute
     private int employeeID;
+    @XmlElement
     private String position;
+    @XmlElement
     private int salary;
+    @XmlElement
     private int personID;
 
     public Employee() {

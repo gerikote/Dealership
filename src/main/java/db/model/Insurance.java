@@ -1,9 +1,21 @@
 package db.model;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.*;
+
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Insurance {
 
+    @XmlAttribute
     private int insuranceId;
+    @XmlElement
     private String insuranceCompany;
+    @XmlElement
     private int coverage;
 
     public Insurance() {

@@ -1,10 +1,22 @@
 package db.model;
+import jakarta.xml.bind.annotation.*;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Manufacturer {
 
+    @XmlAttribute
     private int manufacturerId;
+    @XmlElement
     private String manufacturer;
+    @XmlElement
     private String phoneNumber;
+    @XmlElement
     private String email;
 
     public Manufacturer() {

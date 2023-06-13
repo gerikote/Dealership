@@ -1,10 +1,23 @@
 package db.model;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.*;
+
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class ExtraServices {
 
+    @XmlAttribute
     private int serviceId;
+    @XmlElement
     private String serviceName;
+    @XmlElement
     private String serviceDescription;
+    @XmlElement
     private int price;
 
     public ExtraServices() {

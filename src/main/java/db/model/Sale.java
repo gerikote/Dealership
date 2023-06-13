@@ -1,17 +1,35 @@
 package db.model;
 
-import java.sql.Date;
-import java.time.LocalDate;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import utils.jaxb.DateAdapter;
+import jakarta.xml.bind.annotation.*;
 
+import java.sql.Date;
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Sale {
 
+    @XmlAttribute
     private int saleId;
+    @XmlElement
     private int price;
+    @XmlElement
+    @XmlJavaTypeAdapter(DateAdapter.class)
     private Date date;
+    @XmlElement
     private int employeeId;
+    @XmlElement
     private int customerId;
+    @XmlElement
     private int inventoryId;
+    @XmlElement
     private int insuranceId;
+    @XmlElement
     private int paymentMethodId;
 
     public Sale() {

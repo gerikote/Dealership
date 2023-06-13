@@ -1,10 +1,22 @@
 package db.model;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.*;
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Address {
 
+    @XmlAttribute
     private int addressID;
+    @XmlElement
     private String address;
+    @XmlElement
     private String zipCode;
+    @XmlElement
     private int cityID;
 
     public Address() {

@@ -1,19 +1,37 @@
 package db.model;
 
-import java.time.Year;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.*;
 
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Inventory {
 
+    @XmlAttribute
     private int inventoryId;
+    @XmlElement
     private String model;
+    @XmlElement
     private int year;
+    @XmlElement
     private int mileage;
+    @XmlElement
     private String fuel;
+    @XmlElement
     private int msrp;
+    @XmlElement
     private String vin;
+    @XmlElement
     private boolean inStock;
+    @XmlElement
     private int manufacturerId;
+    @XmlElement
     private int colorId;
+    @XmlElement
     private int conditionId;
 
     public Inventory() {
@@ -118,5 +136,22 @@ public class Inventory {
 
     public void setConditionId(int conditionId) {
         this.conditionId = conditionId;
+    }
+
+    @Override
+    public String toString() {
+        return "Inventory{" +
+                "inventoryId=" + inventoryId +
+                ", model='" + model + '\'' +
+                ", year=" + year +
+                ", mileage=" + mileage +
+                ", fuel='" + fuel + '\'' +
+                ", msrp=" + msrp +
+                ", vin='" + vin + '\'' +
+                ", inStock=" + inStock +
+                ", manufacturerId=" + manufacturerId +
+                ", colorId=" + colorId +
+                ", conditionId=" + conditionId +
+                '}';
     }
 }
