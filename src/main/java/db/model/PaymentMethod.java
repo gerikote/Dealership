@@ -1,6 +1,7 @@
 package db.model;
 
 public class PaymentMethod {
+
     private int paymentMethodId;
     private String paymentMethod;
 

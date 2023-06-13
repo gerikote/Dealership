@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SaleDAO extends BaseDAO<Sale> {
+
     @Override
     protected String getTableName() {
         return "sales";

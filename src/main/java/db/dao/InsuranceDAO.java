@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class InsuranceDAO extends BaseDAO<Insurance> {
+
     @Override
     protected String getTableName() {
         return "insurance";

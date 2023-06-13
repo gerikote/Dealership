@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class InventoryDAO extends BaseDAO<Inventory> {
+
     @Override
     protected String getTableName() {
         return "inventory";

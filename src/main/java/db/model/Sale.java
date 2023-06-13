@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 
 public class Sale {
+
     private int saleId;
     private int price;
     private Date date;

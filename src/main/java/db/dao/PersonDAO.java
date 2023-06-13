@@ -6,7 +6,6 @@ import java.sql.*;
 
 public class PersonDAO extends BaseDAO<Person> {
 
-
     @Override
     protected String getTableName() {
         return "people";

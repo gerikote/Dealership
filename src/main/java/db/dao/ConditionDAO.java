@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ConditionDAO extends BaseDAO<Condition> {
+
     @Override
     protected String getTableName() {
         return "conditions";

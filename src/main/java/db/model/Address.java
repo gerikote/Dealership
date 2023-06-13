@@ -1,6 +1,7 @@
 package db.model;
 
 public class Address {
+
     private int addressID;
     private String address;
     private String zipCode;

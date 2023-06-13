@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class BaseDAO<T> implements IBaseDao<T> {
+
     private ConnectionPool connectionPool;
 
     protected abstract String getTableName();

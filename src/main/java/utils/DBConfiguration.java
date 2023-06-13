@@ -6,12 +6,14 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class DBConfiguration {
+
+    private static final String FILE_PATH = ".\\src\\main\\resources\\db.properties";
     private static String url;
     private static String username;
     private static String password;
 
     static {
-        try (FileReader filereader = new FileReader(".\\src\\main\\resources\\db.properties")) {
+        try (FileReader filereader = new FileReader(FILE_PATH)) {
             Properties properties = new Properties();
             properties.load(filereader);
             url = properties.getProperty("url");

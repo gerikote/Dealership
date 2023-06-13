@@ -1,6 +1,7 @@
 package db.model;
 
 public class Manufacturer {
+
     private int manufacturerId;
     private String manufacturer;
     private String phoneNumber;

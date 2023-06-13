@@ -1,6 +1,7 @@
 package db.model;
 
 public class Insurance {
+
     private int insuranceId;
     private String insuranceCompany;
     private int coverage;

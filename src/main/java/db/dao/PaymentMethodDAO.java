@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class PaymentMethodDAO extends BaseDAO<PaymentMethod> {
+
     @Override
     protected String getTableName() {
         return "payment_methods";

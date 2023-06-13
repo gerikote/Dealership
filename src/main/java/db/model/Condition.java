@@ -1,6 +1,7 @@
 package db.model;
 
 public class Condition {
+
     private int conditionId;
     private String condition;
 

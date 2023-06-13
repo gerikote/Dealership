@@ -3,6 +3,7 @@ package db.model;
 import java.time.Year;
 
 public class Inventory {
+
     private int inventoryId;
     private String model;
     private int year;

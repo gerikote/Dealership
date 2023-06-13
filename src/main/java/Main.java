@@ -7,6 +7,7 @@ import db.services.AddressService;
 import db.services.SaleService;
 
 public class Main {
+
     public static void main(String[] args) {
         //Update address
         AddressDAO addressDAO = new AddressDAO();

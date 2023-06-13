@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class EmployeeDAO extends BaseDAO<Employee> {
+
     @Override
     protected String getTableName() {
         return "employees";

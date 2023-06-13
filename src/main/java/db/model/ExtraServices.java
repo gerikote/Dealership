@@ -1,6 +1,7 @@
 package db.model;
 
 public class ExtraServices {
+
     private int serviceId;
     private String serviceName;
     private String serviceDescription;

@@ -1,6 +1,7 @@
 package db.model;
 
 public class Color {
+
     private int colorId;
     private String color;
 

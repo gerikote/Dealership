@@ -1,6 +1,7 @@
 package db.model;
 
 public class City {
+
     private int cityID;
     private String city;
 

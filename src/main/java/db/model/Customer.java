@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 
 public class Customer {
+
     private int customerId;
     private boolean vipStatus;
     private int personID;

@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 
 public class Employee {
+
     private int employeeID;
     private String position;
     private int salary;

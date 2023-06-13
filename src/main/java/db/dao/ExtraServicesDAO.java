@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ExtraServicesDAO extends BaseDAO<ExtraServices> {
+
     @Override
     protected String getTableName() {
         return "extra_services";
