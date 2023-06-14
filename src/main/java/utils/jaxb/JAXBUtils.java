@@ -25,7 +25,7 @@ public class JAXBUtils {
             String className = clazz.getSimpleName();
             String fileName = "./src/main/resources/" + className + ".xml";
             File file = new File(fileName);
-            JAXBContext jaxbContext = JAXBContext.newInstance(object.getClass(), DateAdapter.class);
+            JAXBContext jaxbContext = JAXBContext.newInstance(object.getClass());
             Marshaller marshaller = jaxbContext.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             marshaller.marshal(object, file);
