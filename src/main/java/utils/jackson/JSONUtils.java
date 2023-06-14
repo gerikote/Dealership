@@ -8,15 +8,16 @@ import java.io.IOException;
 
 public class JSONUtils {
 
-    public static <T> void writeJSON(T object){
-        ObjectMapper mapper= new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
+    public static <T> void writeJSON(T object, String filePath) {
+        ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
         try {
-            mapper.writeValue(new File("./src/main/resources/" +object.getClass().getSimpleName()+".json"),object);
+            mapper.writeValue(new File(filePath), object);
             System.out.println("JSON file written successfully");
-        }catch (IOException e){
-            System.out.println("Error writing JSON file: " +e.getMessage());
+        } catch (IOException e) {
+            System.out.println("Error writing JSON file: " + e.getMessage());
         }
     }
+
     public static <T> T readJSON(String filePath, Class<T> type) {
         ObjectMapper mapper = new ObjectMapper();
         try {

@@ -14,12 +14,15 @@ public class Address {
     @JsonProperty("addressID")
     @XmlAttribute
     private int addressID;
+
     @JsonProperty("address")
     @XmlElement
     private String address;
+
     @JsonProperty("zipCode")
     @XmlElement
     private String zipCode;
+
     @JsonProperty("cityID")
     @XmlElement
     private int cityID;

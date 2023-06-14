@@ -15,12 +15,15 @@ public class ExtraServices {
     @JsonProperty("serviceID")
     @XmlAttribute
     private int serviceID;
+
     @JsonProperty("serviceName")
     @XmlElement
     private String serviceName;
+
     @JsonProperty("serviceDescription")
     @XmlElement
     private String serviceDescription;
+
     @JsonProperty("price")
     @XmlElement
     private int price;

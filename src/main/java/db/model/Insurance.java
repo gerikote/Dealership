@@ -15,8 +15,10 @@ public class Insurance {
     @JsonProperty("insuranceID")
     @XmlAttribute
     private int insuranceID;
+
     @XmlElement
     private String insuranceCompany;
+
     @XmlElement
     private int coverage;
 

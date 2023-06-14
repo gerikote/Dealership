@@ -19,26 +19,33 @@ public class Sale {
     @JsonProperty("saleID")
     @XmlAttribute
     private int saleID;
+
     @JsonProperty("price")
     @XmlElement
     private int price;
+
     @JsonProperty("date")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @XmlElement
     @XmlJavaTypeAdapter(DateAdapter.class)
     private Date date;
+
     @JsonProperty("employeeID")
     @XmlElement
     private int employeeID;
+
     @JsonProperty("customerID")
     @XmlElement
     private int customerID;
+
     @JsonProperty("inventoryID")
     @XmlElement
     private int inventoryID;
+
     @JsonProperty("insuranceID")
     @XmlElement
     private int insuranceID;
+
     @JsonProperty("paymentMethodID")
     @XmlElement
     private int paymentMethodID;

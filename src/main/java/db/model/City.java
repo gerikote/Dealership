@@ -10,9 +10,11 @@ import jakarta.xml.bind.annotation.*;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class City {
+
     @JsonProperty("cityID")
     @XmlAttribute
     private int cityID;
+
     @JsonProperty("city")
     @XmlElement
     private String city;

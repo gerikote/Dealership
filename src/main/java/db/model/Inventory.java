@@ -14,33 +14,43 @@ public class Inventory {
     @JsonProperty("inventoryID")
     @XmlAttribute
     private int inventoryID;
+
     @JsonProperty("model")
     @XmlElement
     private String model;
+
     @JsonProperty("year")
     @XmlElement
     private int year;
+
     @JsonProperty("mileage")
     @XmlElement
     private int mileage;
+
     @JsonProperty("fuel")
     @XmlElement
     private String fuel;
+
     @JsonProperty("msrp")
     @XmlElement
     private int msrp;
+
     @JsonProperty("vin")
     @XmlElement
     private String vin;
+
     @JsonProperty("inStock")
     @XmlElement
     private boolean inStock;
+
     @JsonProperty("manufacturerID")
     @XmlElement
     private int manufacturerID;
+
     @JsonProperty("colorID")
     @XmlElement
     private int colorID;
+
     @JsonProperty("conditionID")
     @XmlElement
     private int conditionID;

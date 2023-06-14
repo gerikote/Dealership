@@ -15,6 +15,7 @@ public class Color {
     @JsonProperty("colorID")
     @XmlAttribute
     private int colorID;
+
     @JsonProperty("color")
     @XmlElement
     private String color;

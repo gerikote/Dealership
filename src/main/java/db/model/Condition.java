@@ -15,6 +15,7 @@ public class Condition {
     @JsonProperty("conditionID")
     @XmlAttribute
     private int conditionID;
+
     @JsonProperty("condition")
     @XmlElement
     private String condition;

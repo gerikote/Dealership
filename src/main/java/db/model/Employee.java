@@ -16,12 +16,15 @@ public class Employee {
     @JsonProperty("employeeID")
     @XmlAttribute
     private int employeeID;
+
     @JsonProperty("position")
     @XmlElement
     private String position;
+
     @JsonProperty("salary")
     @XmlElement
     private int salary;
+
     @JsonProperty("personID")
     @XmlElement
     private int personID;

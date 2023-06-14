@@ -6,18 +6,15 @@ import jakarta.xml.bind.JAXBException;
 import utils.DOMParser;
 import utils.XMLValidator;
 import utils.jackson.JSONUtils;
-import utils.jaxb.DateAdapter;
 import utils.jaxb.JAXBUtils;
 
 import java.io.File;
 import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
+
 
 public class Main {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         //Update address
         AddressDAO addressDAO = new AddressDAO();
         Address address = addressDAO.getByID(1);
@@ -84,15 +81,14 @@ public class Main {
         //DOMParser
         DOMParser.parseXMLFile("./src/main/resources/inventory.xml");
 
+        File xmlFilePerson = new File("./src/main/resources/Person.xml");
+        Person johny = DOMParser.parseXMLToObject(xmlFilePerson, Person.class);
+
         //JAXB
         //Marshall
-        String dateOfBirthString = "2011-01-01";
-        Date dateOfBirth = Date.valueOf(dateOfBirthString);
-        Person person = new Person("Johny", "Doe", dateOfBirth, "1234567890", "john.doe@example.com", 1);
-
-        Sale sale=new Sale(1000,dateOfBirth,1,2,1,1,1);
-
-        Inventory inventory=new Inventory("cx30",2022,10000,"gas",35000,"P1231A232CV",true,1,2,3);
+        Person person = new Person("Johny", "Doe", Date.valueOf("2011-01-01"), "1234567890", "john.doe@example.com", 1);
+        Sale sale = new Sale(1000, Date.valueOf("2022-01-01"), 1, 2, 1, 1, 1);
+        Inventory inventory = new Inventory("cx30", 2022, 10000, "gas", 35000, "P1231A232CV", true, 1, 2, 3);
 
         try {
             JAXBUtils.marshal(person);
@@ -106,16 +102,13 @@ public class Main {
         Inventory invetory2 = JAXBUtils.unmarshal(xmlFile, Inventory.class);
         System.out.println(invetory2);
 
-        File xmlFilePerson = new File("./src/main/resources/Person.xml");
-        Person person2=JAXBUtils.unmarshal(xmlFilePerson,Person.class);
+        Person person2 = JAXBUtils.unmarshal(xmlFilePerson, Person.class);
         System.out.println(person2.toString());
 
         //JSON write
-        JSONUtils.writeJSON(person);
+        JSONUtils.writeJSON(person, "./src/main/resources/Person.json");
 
         //JSON read
-        Person person3 = JSONUtils.readJSON("./src/main/resources/Person.json",Person.class);
-        person3.toString();
-        System.out.println(person3.getFirstName());
+        Person person3 = JSONUtils.readJSON("./src/main/resources/Person.json", Person.class);
     }
 }

@@ -15,9 +15,11 @@ public class Customer {
     @JsonProperty("customerID")
     @XmlAttribute
     private int customerID;
+
     @JsonProperty("vipStatus")
     @XmlElement
     private boolean vipStatus;
+
     @JsonProperty("personID")
     @XmlElement
     private int personID;

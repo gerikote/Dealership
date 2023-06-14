@@ -10,10 +10,10 @@ public class PaymentMethod {
     @JsonProperty("paymentMethodID")
     @XmlAttribute
     private int paymentMethodID;
+
     @JsonProperty("paymentMethod")
     @XmlElement
     private String paymentMethod;
-
 
     public PaymentMethod() {
     }

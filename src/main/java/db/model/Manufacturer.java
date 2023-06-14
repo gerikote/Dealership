@@ -14,12 +14,15 @@ public class Manufacturer {
     @JsonProperty("manufacturerID")
     @XmlAttribute
     private int manufacturerID;
+
     @JsonProperty("manufacturer")
     @XmlElement
     private String manufacturer;
+
     @JsonProperty("phoneNumber")
     @XmlElement
     private String phoneNumber;
+
     @JsonProperty("email")
     @XmlElement
     private String email;
