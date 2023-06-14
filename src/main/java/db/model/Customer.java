@@ -1,5 +1,6 @@
 package db.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -11,10 +12,13 @@ import jakarta.xml.bind.annotation.*;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Customer {
 
+    @JsonProperty("customerID")
     @XmlAttribute
-    private int customerId;
+    private int customerID;
+    @JsonProperty("vipStatus")
     @XmlElement
     private boolean vipStatus;
+    @JsonProperty("personID")
     @XmlElement
     private int personID;
 
@@ -26,12 +30,12 @@ public class Customer {
         this.personID = personID;
     }
 
-    public int getCustomerId() {
-        return customerId;
+    public int getCustomerID() {
+        return customerID;
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+    public void setCustomerID(int customerID) {
+        this.customerID = customerID;
     }
 
     public boolean getVipStatus() {

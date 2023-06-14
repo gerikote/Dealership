@@ -27,11 +27,11 @@ public class InventoryDAO extends BaseDAO<Inventory> {
         ps.setInt(5, entity.getMsrp());
         ps.setString(6, entity.getVin());
         ps.setBoolean(7, entity.isInStock());
-        ps.setInt(8, entity.getManufacturerId());
-        ps.setInt(9, entity.getColorId());
-        ps.setInt(10, entity.getColorId());
+        ps.setInt(8, entity.getManufacturerID());
+        ps.setInt(9, entity.getColorID());
+        ps.setInt(10, entity.getConditionID());
         if (isUpdate) {
-            ps.setInt(11, entity.getInventoryId());
+            ps.setInt(11, entity.getInventoryID());
         }
 
 
@@ -52,7 +52,7 @@ public class InventoryDAO extends BaseDAO<Inventory> {
     @Override
     protected Inventory mapResultSetToObject(ResultSet rs) throws SQLException {
         Inventory inventory = new Inventory();
-        inventory.setInventoryId(rs.getInt("inventory_id"));
+        inventory.setInventoryID(rs.getInt("inventory_id"));
         inventory.setModel(rs.getString("model"));
         inventory.setYear(rs.getInt("year"));
         inventory.setMileage(rs.getInt("mileage"));
@@ -60,9 +60,9 @@ public class InventoryDAO extends BaseDAO<Inventory> {
         inventory.setMsrp(rs.getInt("msrp"));
         inventory.setVin(rs.getString("vin"));
         inventory.setInStock(rs.getBoolean("in_stock"));
-        inventory.setManufacturerId(rs.getInt("manufacturer_id"));
-        inventory.setColorId(rs.getInt("color_id"));
-        inventory.setConditionId(rs.getInt("condition_id"));
+        inventory.setManufacturerID(rs.getInt("manufacturer_id"));
+        inventory.setColorID(rs.getInt("color_id"));
+        inventory.setConditionID(rs.getInt("condition_id"));
         return inventory;
     }
 }

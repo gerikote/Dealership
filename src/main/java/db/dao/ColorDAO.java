@@ -22,7 +22,7 @@ public class ColorDAO extends BaseDAO<Color> {
     protected void setParameters(PreparedStatement ps, Color entity, boolean isUpdate) throws SQLException {
         ps.setString(1, entity.getColor());
         if (isUpdate) {
-            ps.setInt(2, entity.getColorId());
+            ps.setInt(2, entity.getColorID());
         }
     }
 
@@ -41,7 +41,7 @@ public class ColorDAO extends BaseDAO<Color> {
     @Override
     protected Color mapResultSetToObject(ResultSet rs) throws SQLException {
         Color color = new Color();
-        color.setColorId(rs.getInt("color_id"));
+        color.setColorID(rs.getInt("color_id"));
         color.setColor(rs.getString("color"));
 
         return color;

@@ -1,5 +1,6 @@
 package db.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
@@ -10,12 +11,16 @@ import jakarta.xml.bind.annotation.*;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Address {
 
+    @JsonProperty("addressID")
     @XmlAttribute
     private int addressID;
+    @JsonProperty("address")
     @XmlElement
     private String address;
+    @JsonProperty("zipCode")
     @XmlElement
     private String zipCode;
+    @JsonProperty("cityID")
     @XmlElement
     private int cityID;
 

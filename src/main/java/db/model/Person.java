@@ -1,5 +1,7 @@
 package db.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.xml.bind.annotation.*;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import utils.jaxb.DateAdapter;
@@ -11,19 +13,27 @@ import java.sql.Date;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Person {
 
+    @JsonProperty("personID")
     @XmlAttribute
     private int personID;
+    @JsonProperty("firstName")
     @XmlElement
     private String firstName;
+    @JsonProperty("lastName")
     @XmlElement
     private String lastName;
+    @JsonProperty("dateOfBirth")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @XmlElement
     @XmlJavaTypeAdapter(DateAdapter.class)
     private Date dateOfBirth;
+    @JsonProperty("phoneNumber")
     @XmlElement
     private String phoneNumber;
+    @JsonProperty("email")
     @XmlElement
     private String email;
+    @JsonProperty("addressID")
     @XmlElement
     private int addressID;
 

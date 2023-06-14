@@ -22,7 +22,7 @@ public class PaymentMethodDAO extends BaseDAO<PaymentMethod> {
     protected void setParameters(PreparedStatement ps, PaymentMethod entity, boolean isUpdate) throws SQLException {
         ps.setString(1, "payment_method");
         if (isUpdate) {
-            ps.setInt(2, entity.getPaymentMethodId());
+            ps.setInt(2, entity.getPaymentMethodID());
         }
     }
 

@@ -1,4 +1,5 @@
 package db.model;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.xml.bind.annotation.*;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -10,12 +11,16 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Manufacturer {
 
+    @JsonProperty("manufacturerID")
     @XmlAttribute
-    private int manufacturerId;
+    private int manufacturerID;
+    @JsonProperty("manufacturer")
     @XmlElement
     private String manufacturer;
+    @JsonProperty("phoneNumber")
     @XmlElement
     private String phoneNumber;
+    @JsonProperty("email")
     @XmlElement
     private String email;
 
@@ -28,12 +33,12 @@ public class Manufacturer {
         this.email = email;
     }
 
-    public int getManufacturerId() {
-        return manufacturerId;
+    public int getManufacturerID() {
+        return manufacturerID;
     }
 
-    public void setManufacturerId(int manufacturerId) {
-        this.manufacturerId = manufacturerId;
+    public void setManufacturerID(int manufacturerID) {
+        this.manufacturerID = manufacturerID;
     }
 
     public String getManufacturer() {
@@ -63,7 +68,7 @@ public class Manufacturer {
     @Override
     public String toString() {
         return "Manufacturer{" +
-                "manufacturerId=" + manufacturerId +
+                "manufacturerId=" + manufacturerID +
                 ", manufacturer='" + manufacturer + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +

@@ -23,7 +23,7 @@ public class CustomerDAO extends BaseDAO<Customer> {
         ps.setBoolean(1, entity.getVipStatus());
         ps.setInt(2, entity.getPersonID());
         if (isUpdate) {
-            ps.setInt(3, entity.getCustomerId());
+            ps.setInt(3, entity.getCustomerID());
         }
     }
 
@@ -42,7 +42,7 @@ public class CustomerDAO extends BaseDAO<Customer> {
     @Override
     protected Customer mapResultSetToObject(ResultSet rs) throws SQLException {
         Customer customer = new Customer();
-        customer.setCustomerId(rs.getInt("customer_id"));
+        customer.setCustomerID(rs.getInt("customer_id"));
         customer.setVipStatus(rs.getBoolean("vip_status"));
         customer.setPersonID(rs.getInt("person_id"));
         return customer;

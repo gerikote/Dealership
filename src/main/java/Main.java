@@ -5,6 +5,7 @@ import db.services.SaleService;
 import jakarta.xml.bind.JAXBException;
 import utils.DOMParser;
 import utils.XMLValidator;
+import utils.jackson.JSONUtils;
 import utils.jaxb.DateAdapter;
 import utils.jaxb.JAXBUtils;
 
@@ -108,5 +109,13 @@ public class Main {
         File xmlFilePerson = new File("./src/main/resources/Person.xml");
         Person person2=JAXBUtils.unmarshal(xmlFilePerson,Person.class);
         System.out.println(person2.toString());
+
+        //JSON write
+        JSONUtils.writeJSON(person);
+
+        //JSON read
+        Person person3 = JSONUtils.readJSON("./src/main/resources/Person.json",Person.class);
+        person3.toString();
+        System.out.println(person3.getFirstName());
     }
 }
