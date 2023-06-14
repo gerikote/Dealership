@@ -11,7 +11,7 @@ public class JAXBUtils {
 
     public static <T> T unmarshal(File file, Class<T> clazz) {
         try {
-            JAXBContext jaxbContext = JAXBContext.newInstance(clazz, DateAdapter.class);
+            JAXBContext jaxbContext = JAXBContext.newInstance(clazz);
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
             return clazz.cast(unmarshaller.unmarshal(file));
         } catch (JAXBException e) {
