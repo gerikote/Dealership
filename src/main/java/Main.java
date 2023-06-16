@@ -1,3 +1,4 @@
+import db.conection.ConnectionPool;
 import db.dao.*;
 import db.model.*;
 import db.services.AddressService;
@@ -14,6 +15,7 @@ import java.sql.Date;
 public class Main {
 
     public static void main(String[] args) {
+
         //Update address
         AddressDAO addressDAO = new AddressDAO();
         Address address = addressDAO.getByID(1);
@@ -22,6 +24,7 @@ public class Main {
         address.setCityID(2);
         addressDAO.update(address);
         System.out.println(addressDAO.getAll());
+
         //insert address
         Address newAddress = new Address("testadress", "0000", 1);
         addressDAO.save(newAddress);

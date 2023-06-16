@@ -31,15 +31,23 @@ public abstract class BaseDAO<T> implements IBaseDao<T> {
         List<T> resultList = new ArrayList<>();
         String sql = "SELECT * FROM " + getTableName();
 
-        try (Connection connection = connectionPool.getConnection();
-             PreparedStatement ps = connection.prepareStatement(sql);
-             ResultSet rs = ps.executeQuery()) {
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            connection = connectionPool.getConnection();
+            ps = connection.prepareStatement(sql);
+            rs = ps.executeQuery();
+
             while (rs.next()) {
                 T object = mapResultSetToObject(rs);
                 resultList.add(object);
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            closeResources(rs, ps, connection);
         }
 
         return resultList;
@@ -47,52 +55,94 @@ public abstract class BaseDAO<T> implements IBaseDao<T> {
 
     public T getByID(int id) {
         T object = null;
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
 
         try {
-            Connection connection = connectionPool.getConnection();
+            connection = connectionPool.getConnection();
             String query = "SELECT * FROM " + getTableName() + " WHERE " + getIdName() + " = ?";
-            PreparedStatement ps = connection.prepareStatement(query);
+            ps = connection.prepareStatement(query);
             ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
+            rs = ps.executeQuery();
 
             if (rs.next()) {
                 object = mapResultSetToObject(rs);
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            closeResources(rs, ps, connection);
         }
+
         return object;
     }
 
     public void deleteByID(int id) {
-        try (Connection connection = connectionPool.getConnection();
-             PreparedStatement ps = connection.prepareStatement("DELETE FROM " + getTableName() + " WHERE " + getIdName() + " = ?")) {
+        Connection connection = null;
+        PreparedStatement ps = null;
+
+        try {
+            connection = connectionPool.getConnection();
+            ps = connection.prepareStatement("DELETE FROM " + getTableName() + " WHERE " + getIdName() + " = ?");
             ps.setInt(1, id);
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            closeResources(null, ps, connection);
         }
     }
 
-
     public void save(T entity) {
-        try (Connection connection = connectionPool.getConnection();
-             PreparedStatement ps = connection.prepareStatement(generateInsertQuery())) {
+        Connection connection = null;
+        PreparedStatement ps = null;
+
+        try {
+            connection = connectionPool.getConnection();
+            ps = connection.prepareStatement(generateInsertQuery());
             setParameters(ps, entity, false);
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            closeResources(null, ps, connection);
         }
     }
 
-
     public void update(T entity) {
-        try (Connection connection = connectionPool.getConnection();
-             PreparedStatement ps = connection.prepareStatement(generateUpdateQuery())) {
+        Connection connection = null;
+        PreparedStatement ps = null;
+
+        try {
+            connection = connectionPool.getConnection();
+            ps = connection.prepareStatement(generateUpdateQuery());
             setParameters(ps, entity, true);
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            closeResources(null, ps, connection);
+        }
+    }
+
+    private void closeResources(ResultSet rs, PreparedStatement ps, Connection connection) {
+        if (rs != null) {
+            try {
+                rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        if (ps != null) {
+            try {
+                ps.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        if (connection != null) {
+            connectionPool.releaseConnection(connection);
         }
     }
 }
