@@ -1,13 +1,13 @@
 package db.dao;
 
-import db.interfaces.IBaseDao;
+import db.interfaces.IBaseDAO;
 import db.conection.ConnectionPool;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class BaseDAO<T> implements IBaseDao<T> {
+public abstract class BaseDAO<T> implements IBaseDAO<T> {
 
     private ConnectionPool connectionPool;
 
