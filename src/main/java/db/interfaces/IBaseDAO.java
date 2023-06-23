@@ -2,7 +2,7 @@ package db.interfaces;
 
 import java.util.List;
 
-public interface IBaseDao<T> {
+public interface IBaseDAO<T> {
 
     void save(T entity);
     T getByID(int id);
