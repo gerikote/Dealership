@@ -1,25 +1,64 @@
 package db.model;
 
-import java.time.Year;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.*;
 
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Inventory {
+    @JsonProperty("inventoryID")
+    @XmlAttribute
+    private int inventoryID;
 
-    private int inventoryId;
+    @JsonProperty("model")
+    @XmlElement
     private String model;
+
+    @JsonProperty("year")
+    @XmlElement
     private int year;
+
+    @JsonProperty("mileage")
+    @XmlElement
     private int mileage;
+
+    @JsonProperty("fuel")
+    @XmlElement
     private String fuel;
+
+    @JsonProperty("msrp")
+    @XmlElement
     private int msrp;
+
+    @JsonProperty("vin")
+    @XmlElement
     private String vin;
+
+    @JsonProperty("inStock")
+    @XmlElement
     private boolean inStock;
-    private int manufacturerId;
-    private int colorId;
-    private int conditionId;
+
+    @JsonProperty("manufacturerID")
+    @XmlElement
+    private int manufacturerID;
+
+    @JsonProperty("colorID")
+    @XmlElement
+    private int colorID;
+
+    @JsonProperty("conditionID")
+    @XmlElement
+    private int conditionID;
 
     public Inventory() {
     }
 
-    public Inventory(String model, int year, int mileage, String fuel, int msrp, String vin, boolean inStock, int manufacturerId, int colorId, int conditionId) {
+    public Inventory(String model, int year, int mileage, String fuel, int msrp, String vin, boolean inStock, int manufacturerID, int colorID, int conditionID) {
         this.model = model;
         this.year = year;
         this.mileage = mileage;
@@ -27,17 +66,17 @@ public class Inventory {
         this.msrp = msrp;
         this.vin = vin;
         this.inStock = inStock;
-        this.manufacturerId = manufacturerId;
-        this.colorId = colorId;
-        this.conditionId = conditionId;
+        this.manufacturerID = manufacturerID;
+        this.colorID = colorID;
+        this.conditionID = conditionID;
     }
 
-    public int getInventoryId() {
-        return inventoryId;
+    public int getInventoryID() {
+        return inventoryID;
     }
 
-    public void setInventoryId(int inventoryId) {
-        this.inventoryId = inventoryId;
+    public void setInventoryID(int inventoryID) {
+        this.inventoryID = inventoryID;
     }
 
     public String getModel() {
@@ -96,27 +135,44 @@ public class Inventory {
         this.inStock = inStock;
     }
 
-    public int getManufacturerId() {
-        return manufacturerId;
+    public int getManufacturerID() {
+        return manufacturerID;
     }
 
-    public void setManufacturerId(int manufacturerId) {
-        this.manufacturerId = manufacturerId;
+    public void setManufacturerID(int manufacturerID) {
+        this.manufacturerID = manufacturerID;
     }
 
-    public int getColorId() {
-        return colorId;
+    public int getColorID() {
+        return colorID;
     }
 
-    public void setColorId(int colorId) {
-        this.colorId = colorId;
+    public void setColorID(int colorID) {
+        this.colorID = colorID;
     }
 
-    public int getConditionId() {
-        return conditionId;
+    public int getConditionID() {
+        return conditionID;
     }
 
-    public void setConditionId(int conditionId) {
-        this.conditionId = conditionId;
+    public void setConditionID(int conditionID) {
+        this.conditionID = conditionID;
+    }
+
+    @Override
+    public String toString() {
+        return "Inventory{" +
+                "inventoryID=" + inventoryID +
+                ", model='" + model + '\'' +
+                ", year=" + year +
+                ", mileage=" + mileage +
+                ", fuel='" + fuel + '\'' +
+                ", msrp=" + msrp +
+                ", vin='" + vin + '\'' +
+                ", inStock=" + inStock +
+                ", manufacturerID=" + manufacturerID +
+                ", colorID=" + colorID +
+                ", conditionID=" + conditionID +
+                '}';
     }
 }

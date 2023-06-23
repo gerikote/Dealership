@@ -22,7 +22,7 @@ public class ConditionDAO extends BaseDAO<Condition> {
     protected void setParameters(PreparedStatement ps, Condition entity, boolean isUpdate) throws SQLException {
         ps.setString(1, entity.getCondition());
         if (isUpdate) {
-            ps.setInt(2, entity.getConditionId());
+            ps.setInt(2, entity.getConditionID());
         }
     }
 
@@ -41,7 +41,7 @@ public class ConditionDAO extends BaseDAO<Condition> {
     @Override
     protected Condition mapResultSetToObject(ResultSet rs) throws SQLException {
         Condition condition = new Condition();
-        condition.setConditionId(rs.getInt("condition_id"));
+        condition.setConditionID(rs.getInt("condition_id"));
         condition.setCondition(rs.getString("condition"));
         return condition;
     }

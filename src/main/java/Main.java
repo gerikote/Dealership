@@ -1,14 +1,21 @@
+import db.conection.ConnectionPool;
 import db.dao.*;
-import db.model.Address;
-import db.model.City;
-import db.model.Condition;
-import db.model.Manufacturer;
+import db.model.*;
 import db.services.AddressService;
 import db.services.SaleService;
+import jakarta.xml.bind.JAXBException;
+import utils.DOMParser;
+import utils.XMLValidator;
+import utils.jackson.JSONUtils;
+import utils.jaxb.JAXBUtils;
+
+import java.io.File;
+import java.sql.Date;
 
 public class Main {
 
     public static void main(String[] args) {
+
         //Update address
         AddressDAO addressDAO = new AddressDAO();
         Address address = addressDAO.getByID(1);
@@ -17,6 +24,7 @@ public class Main {
         address.setCityID(2);
         addressDAO.update(address);
         System.out.println(addressDAO.getAll());
+
         //insert address
         Address newAddress = new Address("testadress", "0000", 1);
         addressDAO.save(newAddress);
@@ -66,5 +74,43 @@ public class Main {
 
         SaleService saleService = new SaleService();
         System.out.println(saleService.getAllSales());
+
+        //validate xml
+        File xmlFile = new File("./src/main/resources/inventory.xml");
+        File xsdSchema = new File("./src/main/resources/inventorySchema.xsd");
+        System.out.println("Is xml file valid? " + XMLValidator.isXMLValid(xmlFile, xsdSchema));
+
+        //DOMParser
+        DOMParser.parseXMLFile("./src/main/resources/inventory.xml");
+
+        File xmlFilePerson = new File("./src/main/resources/Person.xml");
+        Person johny = DOMParser.parseXMLToObject(xmlFilePerson, Person.class);
+
+        //JAXB
+        //Marshall
+        Person person = new Person("Johny", "Doe", Date.valueOf("2011-01-01"), "1234567890", "john.doe@example.com", 1);
+        Sale sale = new Sale(1000, Date.valueOf("2022-01-01"), 1, 2, 1, 1, 1);
+        Inventory inventory = new Inventory("cx30", 2022, 10000, "gas", 35000, "P1231A232CV", true, 1, 2, 3);
+
+        try {
+            JAXBUtils.marshal(person);
+            JAXBUtils.marshal(sale);
+            JAXBUtils.marshal(inventory);
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+
+        //Unmarshall
+        Inventory invetory2 = JAXBUtils.unmarshal(xmlFile, Inventory.class);
+        System.out.println(invetory2);
+
+        Person person2 = JAXBUtils.unmarshal(xmlFilePerson, Person.class);
+        System.out.println(person2.toString());
+
+        //JSON write
+        JSONUtils.writeJSON(person, "./src/main/resources/Person.json");
+
+        //JSON read
+        Person person3 = JSONUtils.readJSON("./src/main/resources/Person.json", Person.class);
     }
 }

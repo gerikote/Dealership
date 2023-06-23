@@ -24,7 +24,7 @@ public class ExtraServicesDAO extends BaseDAO<ExtraServices> {
         ps.setString(2, entity.getServiceDescription());
         ps.setInt(3, entity.getPrice());
         if (isUpdate) {
-            ps.setInt(4, entity.getServiceId());
+            ps.setInt(4, entity.getServiceID());
         }
     }
 
@@ -43,7 +43,7 @@ public class ExtraServicesDAO extends BaseDAO<ExtraServices> {
     @Override
     protected ExtraServices mapResultSetToObject(ResultSet rs) throws SQLException {
         ExtraServices extraServices = new ExtraServices();
-        extraServices.setServiceId(rs.getInt("service_id"));
+        extraServices.setServiceID(rs.getInt("service_id"));
         extraServices.setServiceName(rs.getString("service_name"));
         extraServices.setServiceDescription(rs.getString("service_description"));
         extraServices.setPrice(rs.getInt("price"));

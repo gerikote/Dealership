@@ -1,8 +1,23 @@
 package db.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.*;
+
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Condition {
 
-    private int conditionId;
+    @JsonProperty("conditionID")
+    @XmlAttribute
+    private int conditionID;
+
+    @JsonProperty("condition")
+    @XmlElement
     private String condition;
 
     public Condition() {
@@ -12,12 +27,12 @@ public class Condition {
         this.condition = condition;
     }
 
-    public int getConditionId() {
-        return conditionId;
+    public int getConditionID() {
+        return conditionID;
     }
 
-    public void setConditionId(int conditionId) {
-        this.conditionId = conditionId;
+    public void setConditionID(int conditionID) {
+        this.conditionID = conditionID;
     }
 
     public String getCondition() {
@@ -31,7 +46,7 @@ public class Condition {
     @Override
     public String toString() {
         return "Condition{" +
-                "conditionId=" + conditionId +
+                "conditionId=" + conditionID +
                 ", condition='" + condition + '\'' +
                 '}';
     }

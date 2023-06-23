@@ -1,10 +1,31 @@
 package db.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.*;
+
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class ExtraServices {
 
-    private int serviceId;
+    @JsonProperty("serviceID")
+    @XmlAttribute
+    private int serviceID;
+
+    @JsonProperty("serviceName")
+    @XmlElement
     private String serviceName;
+
+    @JsonProperty("serviceDescription")
+    @XmlElement
     private String serviceDescription;
+
+    @JsonProperty("price")
+    @XmlElement
     private int price;
 
     public ExtraServices() {
@@ -16,12 +37,12 @@ public class ExtraServices {
         this.price = price;
     }
 
-    public int getServiceId() {
-        return serviceId;
+    public int getServiceID() {
+        return serviceID;
     }
 
-    public void setServiceId(int serviceId) {
-        this.serviceId = serviceId;
+    public void setServiceID(int serviceID) {
+        this.serviceID = serviceID;
     }
 
     public String getServiceName() {
@@ -51,7 +72,7 @@ public class ExtraServices {
     @Override
     public String toString() {
         return "ExtraServices{" +
-                "serviceId=" + serviceId +
+                "serviceId=" + serviceID +
                 ", serviceName='" + serviceName + '\'' +
                 ", serviceDescription='" + serviceDescription + '\'' +
                 ", price=" + price +

@@ -1,8 +1,18 @@
 package db.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.xml.bind.annotation.*;
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class PaymentMethod {
 
-    private int paymentMethodId;
+    @JsonProperty("paymentMethodID")
+    @XmlAttribute
+    private int paymentMethodID;
+
+    @JsonProperty("paymentMethod")
+    @XmlElement
     private String paymentMethod;
 
     public PaymentMethod() {
@@ -12,12 +22,12 @@ public class PaymentMethod {
         this.paymentMethod = paymentMethod;
     }
 
-    public int getPaymentMethodId() {
-        return paymentMethodId;
+    public int getPaymentMethodID() {
+        return paymentMethodID;
     }
 
-    public void setPaymentMethodId(int paymentMethodId) {
-        this.paymentMethodId = paymentMethodId;
+    public void setPaymentMethodId(int paymentMethodID) {
+        this.paymentMethodID = paymentMethodID;
     }
 
     public String getPaymentMethod() {
@@ -31,7 +41,7 @@ public class PaymentMethod {
     @Override
     public String toString() {
         return "PaymentMethod{" +
-                "paymentMethodId=" + paymentMethodId +
+                "paymentMethodId=" + paymentMethodID +
                 ", paymentMethod='" + paymentMethod + '\'' +
                 '}';
     }

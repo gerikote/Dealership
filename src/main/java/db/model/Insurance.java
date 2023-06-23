@@ -1,9 +1,25 @@
 package db.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.*;
+
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Insurance {
 
-    private int insuranceId;
+    @JsonProperty("insuranceID")
+    @XmlAttribute
+    private int insuranceID;
+
+    @XmlElement
     private String insuranceCompany;
+
+    @XmlElement
     private int coverage;
 
     public Insurance() {
@@ -14,12 +30,12 @@ public class Insurance {
         this.coverage = coverage;
     }
 
-    public int getInsuranceId() {
-        return insuranceId;
+    public int getInsuranceID() {
+        return insuranceID;
     }
 
-    public void setInsuranceId(int insuranceId) {
-        this.insuranceId = insuranceId;
+    public void setInsuranceID(int insuranceID) {
+        this.insuranceID = insuranceID;
     }
 
     public String getInsuranceCompany() {
@@ -41,7 +57,7 @@ public class Insurance {
     @Override
     public String toString() {
         return "Insurance{" +
-                "insuranceId=" + insuranceId +
+                "insuranceId=" + insuranceID +
                 ", insuranceCompany='" + insuranceCompany + '\'' +
                 ", coverage=" + coverage +
                 '}';

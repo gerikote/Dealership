@@ -1,8 +1,23 @@
 package db.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.*;
+
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Color {
 
-    private int colorId;
+    @JsonProperty("colorID")
+    @XmlAttribute
+    private int colorID;
+
+    @JsonProperty("color")
+    @XmlElement
     private String color;
 
     public Color() {
@@ -12,12 +27,12 @@ public class Color {
         this.color = color;
     }
 
-    public int getColorId() {
-        return colorId;
+    public int getColorID() {
+        return colorID;
     }
 
-    public void setColorId(int colorId) {
-        this.colorId = colorId;
+    public void setColorID(int colorID) {
+        this.colorID = colorID;
     }
 
     public String getColor() {
@@ -31,7 +46,7 @@ public class Color {
     @Override
     public String toString() {
         return "Color{" +
-                "colorId=" + colorId +
+                "colorId=" + colorID +
                 ", color='" + color + '\'' +
                 '}';
     }

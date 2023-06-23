@@ -1,38 +1,74 @@
 package db.model;
 
-import java.sql.Date;
-import java.time.LocalDate;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import utils.jaxb.DateAdapter;
+import jakarta.xml.bind.annotation.*;
 
+import java.sql.Date;
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Sale {
 
-    private int saleId;
+    @JsonProperty("saleID")
+    @XmlAttribute
+    private int saleID;
+
+    @JsonProperty("price")
+    @XmlElement
     private int price;
+
+    @JsonProperty("date")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @XmlElement
+    @XmlJavaTypeAdapter(DateAdapter.class)
     private Date date;
-    private int employeeId;
-    private int customerId;
-    private int inventoryId;
-    private int insuranceId;
-    private int paymentMethodId;
+
+    @JsonProperty("employeeID")
+    @XmlElement
+    private int employeeID;
+
+    @JsonProperty("customerID")
+    @XmlElement
+    private int customerID;
+
+    @JsonProperty("inventoryID")
+    @XmlElement
+    private int inventoryID;
+
+    @JsonProperty("insuranceID")
+    @XmlElement
+    private int insuranceID;
+
+    @JsonProperty("paymentMethodID")
+    @XmlElement
+    private int paymentMethodID;
 
     public Sale() {
     }
 
-    public Sale(int price, Date date, int employeeId, int customerId, int inventoryId, int insuranceId, int paymentMethodId) {
+    public Sale(int price, Date date, int employeeID, int customerID, int inventoryID, int insuranceID, int paymentMethodID) {
         this.price = price;
         this.date = date;
-        this.employeeId = employeeId;
-        this.customerId = customerId;
-        this.inventoryId = inventoryId;
-        this.insuranceId = insuranceId;
-        this.paymentMethodId = paymentMethodId;
+        this.employeeID = employeeID;
+        this.customerID = customerID;
+        this.inventoryID = inventoryID;
+        this.insuranceID = insuranceID;
+        this.paymentMethodID = paymentMethodID;
     }
 
-    public int getSaleId() {
-        return saleId;
+    public int getSaleID() {
+        return saleID;
     }
 
-    public void setSaleId(int saleId) {
-        this.saleId = saleId;
+    public void setSaleID(int saleID) {
+        this.saleID = saleID;
     }
 
     public int getPrice() {
@@ -51,57 +87,57 @@ public class Sale {
         this.date = date;
     }
 
-    public int getEmployeeId() {
-        return employeeId;
+    public int getEmployeeID() {
+        return employeeID;
     }
 
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
+    public void setEmployeeID(int employeeID) {
+        this.employeeID = employeeID;
     }
 
-    public int getCustomerId() {
-        return customerId;
+    public int getCustomerID() {
+        return customerID;
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+    public void setCustomerID(int customerID) {
+        this.customerID = customerID;
     }
 
-    public int getInventoryId() {
-        return inventoryId;
+    public int getInventoryID() {
+        return inventoryID;
     }
 
-    public void setInventoryId(int inventoryId) {
-        this.inventoryId = inventoryId;
+    public void setInventoryID(int inventoryID) {
+        this.inventoryID = inventoryID;
     }
 
-    public int getInsuranceId() {
-        return insuranceId;
+    public int getInsuranceID() {
+        return insuranceID;
     }
 
-    public void setInsuranceId(int insuranceId) {
-        this.insuranceId = insuranceId;
+    public void setInsuranceID(int insuranceID) {
+        this.insuranceID = insuranceID;
     }
 
-    public int getPaymentMethodId() {
-        return paymentMethodId;
+    public int getPaymentMethodID() {
+        return paymentMethodID;
     }
 
-    public void setPaymentMethodId(int paymentMethodId) {
-        this.paymentMethodId = paymentMethodId;
+    public void setPaymentMethodID(int paymentMethodID) {
+        this.paymentMethodID = paymentMethodID;
     }
 
     @Override
     public String toString() {
         return "Sale{" +
-                "saleId=" + saleId +
+                "saleId=" + saleID +
                 ", price=" + price +
                 ", date=" + date +
-                ", employeeId=" + employeeId +
-                ", customerId=" + customerId +
-                ", inventoryId=" + inventoryId +
-                ", insuranceId=" + insuranceId +
-                ", paymentMethodId=" + paymentMethodId +
+                ", employeeId=" + employeeID +
+                ", customerId=" + customerID +
+                ", inventoryId=" + inventoryID +
+                ", insuranceId=" + insuranceID +
+                ", paymentMethodId=" + paymentMethodID +
                 '}';
     }
 }

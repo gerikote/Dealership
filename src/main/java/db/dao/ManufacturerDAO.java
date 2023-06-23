@@ -30,7 +30,7 @@ public class ManufacturerDAO extends BaseDAO<Manufacturer> {
         ps.setString(2, entity.getPhoneNumber());
         ps.setString(3, entity.getEmail());
         if (isUpdate) {
-            ps.setInt(4, entity.getManufacturerId());
+            ps.setInt(4, entity.getManufacturerID());
         }
     }
 
@@ -43,7 +43,7 @@ public class ManufacturerDAO extends BaseDAO<Manufacturer> {
     @Override
     protected Manufacturer mapResultSetToObject(ResultSet rs) throws SQLException {
         Manufacturer manufacturer = new Manufacturer();
-        manufacturer.setManufacturerId(rs.getInt("manufacturer_id"));
+        manufacturer.setManufacturerID(rs.getInt("manufacturer_id"));
         manufacturer.setManufacturer(rs.getString("manufacturer"));
         manufacturer.setPhoneNumber(rs.getString("phone_number"));
         manufacturer.setEmail(rs.getString("email"));

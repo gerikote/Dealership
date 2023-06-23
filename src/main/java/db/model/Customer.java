@@ -1,12 +1,27 @@
 package db.model;
 
-import java.sql.Date;
-import java.time.LocalDate;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.*;
 
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Customer {
 
-    private int customerId;
+    @JsonProperty("customerID")
+    @XmlAttribute
+    private int customerID;
+
+    @JsonProperty("vipStatus")
+    @XmlElement
     private boolean vipStatus;
+
+    @JsonProperty("personID")
+    @XmlElement
     private int personID;
 
     public Customer() {
@@ -17,12 +32,12 @@ public class Customer {
         this.personID = personID;
     }
 
-    public int getCustomerId() {
-        return customerId;
+    public int getCustomerID() {
+        return customerID;
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+    public void setCustomerID(int customerID) {
+        this.customerID = customerID;
     }
 
     public boolean getVipStatus() {
